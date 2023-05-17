@@ -1,0 +1,75 @@
+/* loginContainer.module.css */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 157px;
+}
+
+/* labelLogin.module.css */
+.labelLogin {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* inputLogin.module.css */
+.inputLogin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #7D7E7E;
+  width: 327px;
+  height: 43px;
+  border: 1px solid #292D32;
+  text-align: center;
+}
+
+/* textLogin.module.css */
+.textLogin {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 23px;
+  text-align: center;
+  color: #000000;
+}
+
+/* buttonLogin.module.css */
+.buttonLogin {
+  width: 327px;
+  box-sizing: border-box;
+  margin-top: 49px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  background: #000000;
+  border: 1px solid #292D32;
+  height: 43px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #FDB600; 
+  cursor: pointer;
+}

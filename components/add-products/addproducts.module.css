@@ -1,0 +1,321 @@
+/* errorBox.module.css */
+.errorBox {
+  position: absolute;
+  background: #000000;
+  border: 2px solid #000000;
+  color: #FDB600;
+  margin-top: 98.9999px;
+}
+
+@media (min-width: 1240px) {
+  .errorBox {
+    top: 109px;
+  }
+}
+
+/* errorBoxDescription.module.css */
+.errorBoxDescription {
+  position: absolute;
+  background: #000000;
+  border: 2px solid #000000;
+  color: #FDB600;
+  margin-top: 284.3px;
+}
+
+@media (min-width: 1240px) {
+  .errorBoxDescription {
+    top: 109px;
+  }
+}
+
+/* errorBoxPrice.module.css */
+.errorBoxPrice {
+  position: absolute;
+  background: #000000;
+  color: #FDB600;
+  margin-top: 98.9px;
+  border: 2px solid #000000;
+}
+
+@media (min-width: 1240px) {
+  .errorBoxPrice {
+    margin-top: 97.9px;
+  }
+}
+
+/* errorBoxCurrency.module.css */
+.errorBoxCurrency {
+  position: absolute;
+  background: #000000;
+  color: #FDB600;
+  margin-top: 98.9px;
+  border: 2px solid #000000;
+}
+
+@media (min-width: 1240px) {
+  .errorBoxCurrency {
+    margin-top: 94.9px;
+  }
+}
+
+/* errorBoxImage.module.css */
+.errorBoxImage {
+  position: absolute;
+  background: #000000;
+  color: #FDB600;
+  margin-top: 568.9px;
+  border: 2px solid #000000;
+}
+
+@media (min-width: 1240px) {
+  .errorBoxImage {
+    top: 69.5px;
+  }
+}
+
+/* errorMessage.module.css */
+.errorMessage {
+  margin: 0;
+}
+
+/* container.module.css */
+.container {
+  width: 378px;
+  height: 782px;
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 8px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1240px) {
+  .container {
+    width: 378px;
+    margin-top: 0px;
+    height: 697px;
+    left: 858px;
+  }
+}
+
+/* form.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1240px) {
+  .form {
+    width: 330px;
+    height: 590px;
+  }
+}
+
+/* inputName.module.css */
+.inputName {
+  text-align: center;
+  box-sizing: border-box;
+  width: 327px;
+  height: 43px;
+  border: 1px solid #292D32;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  margin-top: -20px;
+  color: #7D7E7E;
+  margin: 0 0 0 0;
+}
+
+/* buttonExit.module.css */
+.exit {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  top: 40px;
+  font-size: 28px;
+  left: 297px;
+  width: 24.97px;
+  height: 24.97px;
+}
+
+@media (min-width: 1240px) {
+  .exit {
+    margin-left: 100px;
+    margin-top: -20px;
+  }
+}
+
+/* inputDescription.module.css */
+.inputDescription {
+  box-sizing: border-box;
+  width: 327px;
+  height: 131px;
+  border: 1px solid #292D32;
+  display: block;
+  text-align: center;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #7D7E7E;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* inputPrice.module.css */
+.inputPrice {
+  width: 198px;
+  height: 43px;
+  box-sizing: border-box;
+  border: 1px solid #292D32;
+  text-align: center;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #7D7E7E;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* inputImage.module.css */
+.inputImage {
+  display: none;
+}
+
+/* labelImage.module.css */
+.labelImage {
+  box-sizing: border-box;
+  width: 327px;
+  display: flex;
+  flex-direction: column;
+  height: 131px;
+  border: 1px solid #292D32;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #7D7E7E;
+  justify-content: center;
+  align-items: center;
+}
+
+/* div.module.css */
+.div {
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+}
+
+/* divPrice.module.css */
+.divPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* button.module.css */
+.button {
+  margin-top: 31px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  cursor: pointer;
+  width: 327px;
+  height: 43px;
+  left: 44px;
+  top: 771px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  background: #000000;
+  border: 1px solid #292D32;
+  color: #FDB600;
+}
+
+/* textForm.module.css */
+.textForm {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  margin: 0 0 0 0;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #2E2E2E;
+}
+
+/* nameProduct.module.css */
+.nameProduct {
+  margin-top: 64px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+/* h2.module.css */
+.h2 {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: center;
+  margin: 0 0 0 0;
+  color: #2E2E2E;
+}
+
+/* select.module.css */
+.select {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  border: 1px solid #292D32;
+  line-height: 23px;
+  width: 131px;
+  height: 40px;
+}
+
+/* option.module.css */
+.option {
+  box-sizing: border-box;
+  text-align: center;
+  width: 131px;
+  height: 43px;
+  left: 243px;
+  top: 510px;
+  border: 1px solid #292D32;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #7D7E7E;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}

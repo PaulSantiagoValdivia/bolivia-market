@@ -1,0 +1,94 @@
+.h2 {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
+  margin-left: -180px;
+  color: #2E2E2E;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  width: 348px;
+}
+
+.delate {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  background: #FF0606;
+  border-radius: 8px;
+  width: 50px;
+  height: 44px;
+  cursor: pointer;
+  color: white;
+}
+.edit{
+  box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+border: 1px solid #292D32;
+border-radius: 8px;
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 23px;
+/* identical to box height */
+
+cursor: pointer;
+color: #7D7E7E;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 19px;
+}
+
+.item{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+justify-content: space-between;
+
+}
+
+.nameItem{
+  font-family: 'Outfit';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 23px;
+/* identical to box height */
+
+text-align: center;
+
+color: #2E2E2E;
+}
+@media (min-width: 1240px) {
+  .h2 {
+    margin-left: 8px;
+  }
+
+  .itemList {
+    width: 550px;
+  }
+}

@@ -1,0 +1,33 @@
+/* navInfo.module.css */
+.navInfo {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+/* navContainer.module.css */
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 48.58px;
+  margin-top: 102px;
+}
+
+/* navTitle.module.css */
+.navTitle {
+  margin-left: 10px;
+  width: 159px;
+  height: 19px;
+  color: #FDB600;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 87.5%;
+}
+

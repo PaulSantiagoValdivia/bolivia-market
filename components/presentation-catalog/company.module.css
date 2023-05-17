@@ -1,0 +1,137 @@
+.container {
+  text-align: center;
+}
+
+.presentation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.nameCompany{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  /* identical to box height */
+
+  color: #FDB600;
+}
+
+.slogan {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 52px;
+  text-align: center;
+  margin-top: -29px;
+  color: #000000;
+}
+
+.p{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: -26px;
+  color: #000000;
+}
+.viewProducts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 146px;
+  height: 52px;
+  background: #000000;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.info {
+  margin-top: 60px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  /* identical to box height */
+ text-align: center;
+
+  color: #000000;
+}
+
+.backCatalog {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  position: fixed;
+  width: 380px;
+  height: 62px;
+  top: 50px;
+  left: calc(50% - 190px);
+  /* el 50% es el centro de la pantalla y 190px es la mitad del ancho del botón */
+  background: #FFFFFF;
+  border: 1px solid #BDBCC3;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.backText {
+  width: 175px;
+  font-weight: bold;
+}
+
+.date {
+
+  font-weight: bold;
+}
+
+@media (min-width: 1240px) {
+  .presentation{
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    justify-content: flex-start;
+  }
+  .container{
+    text-align: left;
+  }
+  .nameCompany{
+    color: #4493FE;  
+  }
+  .viewProducts{
+    margin-left: 180px;
+  }
+  .slogan{
+    width: 308px;
+    text-align: left;
+  }
+  .p{
+    width: 448px;
+    text-align: left;
+    margin-top: 28px;
+    margin-left: 40px;
+  }
+
+  .backCatalog{
+    margin-top: 50px;
+    position: absolute;
+  }
+}

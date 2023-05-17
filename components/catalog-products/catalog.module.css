@@ -1,0 +1,66 @@
+
+.container {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.containerProducts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.containerProducts:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  color: #FDB600;
+}
+.imgProducts {
+  width: 173px;
+  height: 173px;
+  left: 23px;
+  top: 1719px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.categoryProducts{
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  margin-top: -14px;
+  color: #FDB600;
+}
+.nameProducts{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+/* identical to box height */
+color: #000000;
+}
+
+.descriptionProducts{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  /* identical to box height */
+  width: 171px;
+  text-align: center;
+  margin-top: -18px;
+  color: #000000;
+}
+
+@media (min-width: 1240px) {
+  .categoryProducts{
+    color: #4493FE;
+  }
+}
