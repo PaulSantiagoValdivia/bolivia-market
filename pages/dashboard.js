@@ -99,7 +99,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className={styles.main} blurContent={showCatalogs} modalOpen={showModal}>
+    <div className={`${styles.main} ${showCatalogs ? styles.blurContent : ''} ${showModal ? styles.modalOpen : ''}`}>
     <div className={styles.dashboardContainer}>
       <NavCompany companyName={companyInfo.name}/>
       <div className={styles.companyInfoContainer}>

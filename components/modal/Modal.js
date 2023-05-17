@@ -1,4 +1,5 @@
-import styles from './modal.modules.css'
+import styles from './modal.module.css'
+
 const Modal = ({ onConfirm, onCancel }) => {
   return (
     <div className={styles.modalContainer} >
