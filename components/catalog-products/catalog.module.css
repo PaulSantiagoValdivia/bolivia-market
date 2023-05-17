@@ -8,6 +8,7 @@
   padding: 10px;
   gap: 10px;
   flex-wrap: wrap;
+  padding-bottom: 60px;
 }
 
 .containerProducts {
@@ -16,6 +17,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+}
+.padding {
+  padding-top: 50px;
 }
 .containerProducts:hover {
   transform: scale(1.1);

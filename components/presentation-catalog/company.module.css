@@ -81,10 +81,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
-  position: fixed;
+  position: sticky;
   width: 380px;
   height: 62px;
-  top: 50px;
+  top: 770px;
   left: calc(50% - 190px);
   /* el 50% es el centro de la pantalla y 190px es la mitad del ancho del botón */
   background: #FFFFFF;
@@ -131,7 +131,7 @@
   }
 
   .backCatalog{
-    margin-top: 50px;
-    position: absolute;
+    top: 10px;
+    position: sticky;
   }
 }
