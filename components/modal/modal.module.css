@@ -45,6 +45,30 @@
 
 .confirmButton {
 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  
+  width: 327px;
+  height: 43px;
+  
+  background: #FF0000;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
+  
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.cancelButton {
+
   box-sizing: border-box;
 
   /* Auto layout */
@@ -70,28 +94,5 @@
   /* identical to box height */
   cursor: pointer;
 
-  color: #FFFFFF;
-}
-
-.cancelButton {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-
-  width: 327px;
-  height: 43px;
-
-  background: #FF0000;
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
-  /* identical to box height */
-
-  cursor: pointer;
   color: #FFFFFF;
 }
