@@ -128,10 +128,12 @@
     text-align: left;
     margin-top: 28px;
     margin-left: 40px;
+  
   }
-
+  .info{
+      margin-bottom: 30px;
+  }
   .backCatalog{
-    top: 10px;
-    position: sticky;
+top: auto;
   }
 }

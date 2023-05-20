@@ -28,6 +28,8 @@
   height: 44px;
   cursor: pointer;
   color: white;
+  border: none;
+  outline: none;
 }
 .edit{
   box-sizing: border-box;

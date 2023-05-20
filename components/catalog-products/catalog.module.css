@@ -27,12 +27,14 @@
   transition: 0.5s;
   color: #FDB600;
 }
+
 .imgProducts {
   width: 173px;
   height: 173px;
   left: 23px;
   top: 1719px;
   border-radius: 8px 8px 0px 0px;
+
 }
 
 .categoryProducts{

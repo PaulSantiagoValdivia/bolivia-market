@@ -1,0 +1,69 @@
+.container {
+  position: absolute;
+  width: 500px;
+  height: 43px;
+  left: 718px;
+  top: 10px;
+}
+
+.title {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
+  
+  text-align: center;
+  
+  color: #2E2E2E;
+  width: 398px;
+height: 23px;
+}
+
+
+
+.subtitle {
+  width: 177px;
+  height: 23px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
+  
+  text-align: left;
+  
+  color: #2E2E2E;
+}
+
+.description {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  
+  color: #2E2E2E;
+}
+
+.button {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  
+  border: 1px solid #292D32;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #aaa;
+}
