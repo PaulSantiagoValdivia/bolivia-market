@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { supabase } from '@/lib/supabaseClient';
 import AddProduct from '@/components/add-products/AddProduct';
 import styles from '@/styles/dashboard.module.css';
-import Logo from '@/components/atoms/Logo';
 import NavCompany from '@/components/nav-dashboard/NavCompany';
 import Items from '@/components/items/Items';
 import AddInfoCompany from '@/components/add-info-company/AddInfoCompany';
@@ -112,7 +111,7 @@ const Dashboard = () => {
       companyId={companyInfo.id}
       onClose={() => setShowCatalogs(false)} />
     </div>
-    <AddInfoCompany/>
+    <AddInfoCompany companyId={companyInfo.id}  />
   </div>
   );
 };

@@ -21,21 +21,34 @@
 
 
 .closeButton {
+  position: absolute;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 28px;
+  margin-left: 280px;
+  width: 24.97px;
+  height: 24.97px;
+  border: none;
+  outline: none;
+}
+
+.submitButton{
 
   box-sizing: border-box;
-
+  
   /* Auto layout */
-
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 10px;
   gap: 10px;
-
+  
   width: 327px;
   height: 43px;
-
+  
   margin-top: -90px;
   background: #000000;
   border: 1px solid #292D32;
@@ -45,11 +58,11 @@
   font-size: 18px;
   line-height: 23px;
   /* identical to box height */
-
-
+  
+  
   color: #FDB600;
-}
 
+}  
 
 
 .inputImage {
@@ -73,6 +86,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 120px;
+  text-align: center;
 }
 
 .textForm {

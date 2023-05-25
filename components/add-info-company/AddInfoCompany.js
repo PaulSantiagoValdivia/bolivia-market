@@ -1,110 +1,200 @@
 import { supabase } from "@/lib/supabaseClient";
-import ModalImg from "../modal-form/ModalImg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./addInfo.module.css";
-export default function AddInfoCompany() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [activeField, setActiveField] = useState('');
+import PortadaModal from "../modal-form/PortadaModal";
+import TituloCatalogoModal from "../modal-form/TituloCatalogoModal";
+import DescripcionModal from "../modal-form/DescripcionModal";
+import BannerModal from "../modal-form/BannerModal";
+
+export default function AddInfoCompany({ companyId }) {
   const [formData, setFormData] = useState({
-    imagen_portada: '',
-    titulo_catalogo: '',
-    descripcion: '',
-    banner: '',
+    imagen_portada: "",
+    titulo_catalogo: "",
+    descripcion: "",
+    banner: ""
   });
 
-  const handleButtonClick = (field) => {
-    setModalOpen(true);
-    setActiveField(field);
-  };
+  const [portadaModalOpen, setPortadaModalOpen] = useState(false);
+  const [tituloCatalogoModalOpen, setTituloCatalogoModalOpen] = useState(false);
+  const [descripcionModalOpen, setDescripcionModalOpen] = useState(false);
+  const [bannerModalOpen, setBannerModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setModalOpen(false);
-    setActiveField('');
-  };
-
-  const handleFormSubmit = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('companies')
-        .update({ [activeField]: formData[activeField] })
-        .single();
-
-      if (error) {
-        throw new Error(error.message);
+  useEffect(() => {
+    const fetchCompanyInfo = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("companies")
+          .select()
+          .eq("id", companyId)
+          .single();
+        if (error) {
+          throw error;
+        }
+        if (data) {
+          setFormData(data);
+        }
+      } catch (error) {
+        console.error("Error al obtener los datos de la compañía:", error.message);
       }
+    };
+    fetchCompanyInfo();
+  }, [companyId]);
 
-      console.log('Datos actualizados en Supabase:', data);
-      closeModal();
+  const handlePortadaModalConfirm = async (selectedImage) => {
+    try {
+      // Cargar la imagen de portada al bucket de Supabase
+      const { data, error } = await supabase.storage
+        .from("comp")
+        .upload(`${companyId}/${selectedImage.name}`, selectedImage);
+      if (error) {
+        throw error;
+      }
+      console.log("Portada image uploaded successfully:", data);
+      // Actualizar el campo de imagen de portada en Supabase
+      await supabase
+        .from("companies")
+        .update({ imagen_portada: selectedImage.name })
+        .eq("id", companyId);
+      // Cerrar el modal de portada
+      setPortadaModalOpen(false);
     } catch (error) {
-      console.error('Error al actualizar datos en Supabase:', error.message);
+      console.error("Error uploading portada image:", error.message);
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleTituloCatalogoModalConfirm = async (titulo) => {
+    try {
+      await supabase
+        .from("companies")
+        .update({ titulo_catalogo: titulo })
+        .eq("id", companyId);
+      setTituloCatalogoModalOpen(false);
+    } catch (error) {
+      console.error("Error al actualizar el título del catálogo:", error.message);
+    }
+  };
+
+  const handleDescripcionModalConfirm = async (descripcion) => {
+    try {
+      await supabase
+        .from("companies")
+        .update({ descripcion: descripcion })
+        .eq("id", companyId);
+      setDescripcionModalOpen(false);
+    } catch (error) {
+      console.error("Error al actualizar la descripción:", error.message);
+    }
+  };
+
+  const handleBannerModalConfirm = async (selectedImage) => {
+    try {
+      // Cargar la imagen del banner al bucket de Supabase
+      const { data, error } = await supabase.storage
+        .from("comp")
+        .upload(`${companyId}/${selectedImage.name}`, selectedImage);
+      if (error) {
+        throw error;
+      }
+      console.log("Banner image uploaded successfully:", data);
+      // Actualizar el campo de banner en Supabase
+      await supabase
+        .from("companies")
+        .update({ banner: selectedImage.name })
+        .eq("id", companyId);
+      // Cerrar el modal de banner
+      setBannerModalOpen(false);
+    } catch (error) {
+      console.error("Error uploading banner image:", error.message);
+    }
   };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>INFORMACION DEL MES PARA TU CATALOGO</h2>
-
       <div className={styles.field}>
         <h3 className={styles.subtitle}>Imagen para portada</h3>
         <p className={styles.description}>
           Es la imagen que verán todos en la página principal.
           El tamaño es 228 de altura y 170 de ancho en pixeles.
         </p>
-        <button className={styles.button} onClick={() => handleButtonClick('imagen_portada')}>
-          {formData.imagen_portada ? 'Editar' : 'Agregar'}
+        <button
+          className={styles.button}
+          onClick={() => setPortadaModalOpen(true)}
+        >
+          {formData.imagen_portada ? "Editar" : "Agregar"}
         </button>
-      </div>
+        {portadaModalOpen && (
+          <PortadaModal
+            isOpen={portadaModalOpen}
+            onClose={() => setPortadaModalOpen(false)}
+            onConfirm={handlePortadaModalConfirm  }
+          />
+        )}
+        </div>
 
       <div className={styles.field}>
         <h3 className={styles.subtitle}>Título del catálogo</h3>
         <p className={styles.description}>
-          Es el titulo que tendra tu catalogo, por ejemplo:
+          Es el titulo que tendrá tu catálogo, por ejemplo:
           “Agosto es el mes del interiorismo”
         </p>
-        <button className={styles.button} onClick={() => handleButtonClick('titulo_catalogo')}>
-          {formData.titulo_catalogo ? 'Editar' : 'Agregar'}
+        <button
+          className={styles.button}
+          onClick={() => setTituloCatalogoModalOpen(true)}
+        >
+          {formData.titulo_catalogo ? "Editar" : "Agregar"}
         </button>
+        {tituloCatalogoModalOpen && (
+          <TituloCatalogoModal
+            isOpen={tituloCatalogoModalOpen}
+            onClose={() => setTituloCatalogoModalOpen(false)}
+            onConfirm={handleTituloCatalogoModalConfirm}
+          />
+        )}
       </div>
 
       <div className={styles.field}>
         <h3 className={styles.subtitle}>Descripción</h3>
         <p className={styles.description}>
-        Es la descripcion que tendra tu catalogo, por ejemplo:
-“En agosto te presentamos un nuevo catalogo de sofas y sillas a tu disposicion, manteniendo el estilo y clase que nos corresponde.”
+          Es la descripción que tendrá tu catálogo, por ejemplo:
+          “En agosto te presentamos un nuevo catálogo de sofás y sillas a tu disposición, manteniendo el estilo y clase que nos corresponde.”
         </p>
-        <button className={styles.button} onClick={() => handleButtonClick('descripcion')}>
-          {formData.descripcion ? 'Editar' : 'Agregar'}
+        <button
+          className={styles.button}
+          onClick={() => setDescripcionModalOpen(true)}
+        >
+          {formData.descripcion ? "Editar" : "Agregar"}
         </button>
+        {descripcionModalOpen && (
+          <DescripcionModal
+            isOpen={descripcionModalOpen}
+            onClose={() => setDescripcionModalOpen(false)}
+            onConfirm={handleDescripcionModalConfirm}
+          />
+        )}
       </div>
+
+      
 
       <div className={styles.field}>
-        <h3 className={styles.subtitle}>Banner</h3>
+        <h3 className={styles.subtitle}>Imagen de banner</h3>
         <p className={styles.description}>
-        Es la imagen que veran todos en tu catalogo. El tamaño es 520 de altura y 1510 de ancho en pixeles.
+          Es la imagen que verán todos en tu catálogo. El tamaño es 520 de altura y 1510 de ancho en pixeles.
         </p>
-        <button className={styles.button} onClick={() => handleButtonClick('banner')}>
-          {formData.banner ? 'Editar' : 'Agregar'}
+        <button
+          className={styles.button}
+          onClick={() => setBannerModalOpen(true)}
+        >
+          {formData.banner ? "Editar" : "Agregar"}
         </button>
+        {bannerModalOpen && (
+          
+          <BannerModal
+            isOpen={bannerModalOpen}
+            onClose={() => setBannerModalOpen(false)}
+            onConfirm={handleBannerModalConfirm}
+          />
+        )}
       </div>
-
-      {modalOpen && (
-        <ModalImg
-          onClose={closeModal}
-          onSubmit={handleFormSubmit}
-          title="Editar información"
-          field={activeField}
-          value={formData[activeField]}
-          onChange={handleInputChange}
-        />
-      )}
     </div>
-  )
-};
+  );
+}
