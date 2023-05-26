@@ -47,7 +47,7 @@ const CompanyCatalogPage = () => {
 
   return (
     <>
-      <Banner/>
+      <Banner companyId={company.id}/>
       <PresntationCompany company={company} />  
       <CatalogProducts catalogs={catalogs} companyId={company.id} />
       </>

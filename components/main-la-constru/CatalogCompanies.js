@@ -2,26 +2,11 @@ import { supabase } from '@/lib/supabaseClient';
 import { useState, useEffect } from 'react';
 import styles from './catalog.module.css';
 import { useRouter } from 'next/router';
-const imgCompany = [
-  {
-    id: 17,
-    image: '/images/company1.png'
-  },
-  {
-    id: 18,
-    image: '/images/company2.png'
-  },
-  {
-    id: 19,
-    image: '/images/company3.png'
-  },
-  {
-    id: 20,
-    image: '/images/company4.png'
-  }
-];
+import Image from 'next/image';
+
 export default function CatalogCompanies() {
   const [companies, setCompanies] = useState([]);
+  const [images, setImages] = useState({});
   const router = useRouter();
 
   useEffect(() => {
@@ -38,24 +23,79 @@ export default function CatalogCompanies() {
     fetchCompanies();
   }, []);
 
+  useEffect(() => {
+    const fetchImages = async () => {
+      const companyIds = companies.map((company) => company.id);
+      const imagePromises = companyIds.map(async (companyId) => {
+        const { data: companyData, error } = await supabase
+          .from('companies')
+          .select('imagen_portada')
+          .eq('id', companyId)
+          .single();
+
+        if (error) {
+          console.error(error);
+          return null;
+        }
+
+        const imageName = companyData.imagen_portada;
+        if (!imageName) return null;
+
+        const { data, error: downloadError } = await supabase.storage
+          .from('comp')
+          .download(`${companyId}/${imageName}`);
+
+        if (downloadError) {
+          console.error(downloadError);
+          return null;
+        }
+
+        return { companyId, url: URL.createObjectURL(data) };
+      });
+
+      const downloadedImages = await Promise.all(imagePromises);
+      const images = downloadedImages.reduce((acc, image) => {
+        if (image) {
+          acc[image.companyId] = image.url;
+        }
+        return acc;
+      }, {});
+
+      setImages(images);
+      console.log(images);
+    };
+
+    fetchImages();
+  }, [companies]);
+
   const redirectToCatalog = (companyName) => {
     router.push(`${encodeURIComponent(companyName)}`);
     console.log(companyName);
   };
-  
+
   return (
     <div className={styles.container}>
       {companies.map((company) => {
-        const companyImage = imgCompany.find((img) => img.id === company.id);
+        const companyImage = images[company.id];
         return (
-          <div className={styles.containerCompanies} key={company.id} onClick={() => redirectToCatalog(company.name)}>
-            <img className={styles.imgCompanies} src={companyImage.image} alt={company.name} />
-            <a className={styles.nameCompanies}> {company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}
-        </a>
+          <div
+            className={styles.containerCompanies}
+            key={company.id}
+            onClick={() => redirectToCatalog(company.name)}
+          >
+            <Image
+              className={styles.imgCompanies}
+              src={companyImage}
+              alt={company.name}
+              width={100}
+              height={225}
+            />
+            <a className={styles.nameCompanies}>
+              {company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}
+            </a>
           </div>
-        )
+        );
       })}
     </div>
   );
 }
-

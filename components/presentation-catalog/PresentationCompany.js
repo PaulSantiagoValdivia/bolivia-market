@@ -15,9 +15,9 @@ export default function PresntationCompany({ company }) {
         <div className={styles.container}>
           <h1 className={styles.nameCompany}>{company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}
         </h1>
-        <p className={styles.slogan}>Agosto es el mes <br /> del interiorismo</p>
+        <p className={styles.slogan}>{company.titulo_catalogo}</p>
         </div>
-        <p className={styles.p}>En agosto te presentamos un nuevo catalogo de sofas y sillas a tu disposicion, manteniendo el estilo y clase que nos corresponde</p>
+        <p className={styles.p}>{company.descripcion}</p>
         <a className={styles.viewProducts} onClick={handleViewProducts} >Ver productos</a>
       </div>
         <p className={styles.info}>PRODUCTOS DESTACADOS</p>
@@ -27,5 +27,5 @@ export default function PresntationCompany({ company }) {
         </button>
         <div ref={ref}/>
       </>
-      );
+);
 }
