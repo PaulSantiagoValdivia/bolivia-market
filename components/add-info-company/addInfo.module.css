@@ -20,7 +20,11 @@
   width: 398px;
 height: 23px;
 }
-
+@media (max-width: 1240px) {
+ .container {
+    display: none;
+  }
+}
 
 
 .subtitle {
