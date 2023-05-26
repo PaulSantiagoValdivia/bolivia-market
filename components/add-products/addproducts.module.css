@@ -1,6 +1,6 @@
 /* errorBox.module.css */
 .errorBox {
-  position: absolute;
+  position: inherit;
   background: #000000;
   border: 2px solid #000000;
   color: #FDB600;

@@ -100,6 +100,7 @@ const Dashboard = () => {
         <p className={styles.info}>Aqui podras agregar, remover o editar los productos de {companyInfo.name} de este mes.</p>
       </div>
       <button className={styles.button} onClick={handleOpenCatalogs}>Agregar Producto</button>
+      <AddInfoCompany companyId={companyInfo.id}  />
       {showCatalogs && <AddProduct companyId={companyInfo.id} onClose={handleCloseCatalogs} updateItems={updateItems} auth={user.id} />}
     <Items
       items={items} 
@@ -111,7 +112,6 @@ const Dashboard = () => {
       companyId={companyInfo.id}
       onClose={() => setShowCatalogs(false)} />
     </div>
-    <AddInfoCompany companyId={companyInfo.id}  />
   </div>
   );
 };

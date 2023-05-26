@@ -109,92 +109,94 @@ export default function AddInfoCompany({ companyId }) {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.field}>
-        <h3 className={styles.subtitle}>Imagen para portada</h3>
-        <p className={styles.description}>
-          Es la imagen que verán todos en la página principal.
-          El tamaño es 228 de altura y 170 de ancho en pixeles.
-        </p>
-        <button
-          className={styles.button}
-          onClick={() => setPortadaModalOpen(true)}
-        >
-          {formData.imagen_portada ? "Editar" : "Agregar"}
-        </button>
-        {portadaModalOpen && (
-          <PortadaModal
-            isOpen={portadaModalOpen}
-            onClose={() => setPortadaModalOpen(false)}
-            onConfirm={handlePortadaModalConfirm  }
-          />
-        )}
+    <>
+      <div className={styles.container}>
+        <div className={styles.field}>
+          <h3 className={styles.subtitle}>Imagen para portada</h3>
+          <p className={styles.description}>
+            Es la imagen que verán todos en la página principal.
+            El tamaño es 228 de altura y 170 de ancho en pixeles.
+          </p>
+          <button
+            className={styles.button}
+            onClick={() => setPortadaModalOpen(true)}
+          >
+            {formData.imagen_portada ? "Editar" : "Agregar"}
+          </button>
+          {portadaModalOpen && (
+            <PortadaModal
+              isOpen={portadaModalOpen}
+              onClose={() => setPortadaModalOpen(false)}
+              onConfirm={handlePortadaModalConfirm}
+            />
+          )}
         </div>
 
-      <div className={styles.field}>
-        <h3 className={styles.subtitle}>Título del catálogo</h3>
-        <p className={styles.description}>
-          Es el titulo que tendrá tu catálogo, por ejemplo:
-          “Agosto es el mes del interiorismo”
-        </p>
-        <button
-          className={styles.button}
-          onClick={() => setTituloCatalogoModalOpen(true)}
-        >
-          {formData.titulo_catalogo ? "Editar" : "Agregar"}
-        </button>
-        {tituloCatalogoModalOpen && (
-          <TituloCatalogoModal
-            isOpen={tituloCatalogoModalOpen}
-            onClose={() => setTituloCatalogoModalOpen(false)}
-            onConfirm={handleTituloCatalogoModalConfirm}
-          />
-        )}
-      </div>
+        <div className={styles.field}>
+          <h3 className={styles.subtitle}>Título del catálogo</h3>
+          <p className={styles.description}>
+            Es el titulo que tendrá tu catálogo, por ejemplo:
+            “Agosto es el mes del interiorismo”
+          </p>
+          <button
+            className={styles.button}
+            onClick={() => setTituloCatalogoModalOpen(true)}
+          >
+            {formData.titulo_catalogo ? "Editar" : "Agregar"}
+          </button>
+          {tituloCatalogoModalOpen && (
+            <TituloCatalogoModal
+              isOpen={tituloCatalogoModalOpen}
+              onClose={() => setTituloCatalogoModalOpen(false)}
+              onConfirm={handleTituloCatalogoModalConfirm}
+            />
+          )}
+        </div>
 
-      <div className={styles.field}>
-        <h3 className={styles.subtitle}>Descripción</h3>
-        <p className={styles.description}>
-          Es la descripción que tendrá tu catálogo, por ejemplo:
-          “En agosto te presentamos un nuevo catálogo de sofás y sillas a tu disposición, manteniendo el estilo y clase que nos corresponde.”
-        </p>
-        <button
-          className={styles.button}
-          onClick={() => setDescripcionModalOpen(true)}
-        >
-          {formData.descripcion ? "Editar" : "Agregar"}
-        </button>
-        {descripcionModalOpen && (
-          <DescripcionModal
-            isOpen={descripcionModalOpen}
-            onClose={() => setDescripcionModalOpen(false)}
-            onConfirm={handleDescripcionModalConfirm}
-          />
-        )}
-      </div>
+        <div className={styles.field}>
+          <h3 className={styles.subtitle}>Descripción</h3>
+          <p className={styles.description}>
+            Es la descripción que tendrá tu catálogo, por ejemplo:
+            “En agosto te presentamos un nuevo catálogo de sofás y sillas a tu disposición, manteniendo el estilo y clase que nos corresponde.”
+          </p>
+          <button
+            className={styles.button}
+            onClick={() => setDescripcionModalOpen(true)}
+          >
+            {formData.descripcion ? "Editar" : "Agregar"}
+          </button>
+          {descripcionModalOpen && (
+            <DescripcionModal
+              isOpen={descripcionModalOpen}
+              onClose={() => setDescripcionModalOpen(false)}
+              onConfirm={handleDescripcionModalConfirm}
+            />
+          )}
+        </div>
 
-      
 
-      <div className={styles.field}>
-        <h3 className={styles.subtitle}>Imagen de banner</h3>
-        <p className={styles.description}>
-          Es la imagen que verán todos en tu catálogo. El tamaño es 520 de altura y 1510 de ancho en pixeles.
-        </p>
-        <button
-          className={styles.button}
-          onClick={() => setBannerModalOpen(true)}
-        >
-          {formData.banner ? "Editar" : "Agregar"}
-        </button>
-        {bannerModalOpen && (
-          
-          <BannerModal
-            isOpen={bannerModalOpen}
-            onClose={() => setBannerModalOpen(false)}
-            onConfirm={handleBannerModalConfirm}
-          />
-        )}
+
+        <div className={styles.field}>
+          <h3 className={styles.subtitle}>Imagen de banner</h3>
+          <p className={styles.description}>
+            Es la imagen que verán todos en tu catálogo. El tamaño es 520 de altura y 1510 de ancho en pixeles.
+          </p>
+          <button
+            className={styles.button}
+            onClick={() => setBannerModalOpen(true)}
+          >
+            {formData.banner ? "Editar" : "Agregar"}
+          </button>
+          {bannerModalOpen && (
+
+            <BannerModal
+              isOpen={bannerModalOpen}
+              onClose={() => setBannerModalOpen(false)}
+              onConfirm={handleBannerModalConfirm}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
