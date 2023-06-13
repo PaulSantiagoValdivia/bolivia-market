@@ -18,6 +18,7 @@ const Dashboard = () => {
   });
   const [showCatalogs, setShowCatalogs] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);

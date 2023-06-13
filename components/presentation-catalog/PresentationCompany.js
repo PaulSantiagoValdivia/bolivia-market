@@ -25,7 +25,6 @@ export default function PresntationCompany({ company }) {
         <p className={styles.backText}>ver otros catálogos</p>
         <p className={styles.date}>abril 2023</p>
       </button>
-git 
       <div ref={ref} />
     </>
   );

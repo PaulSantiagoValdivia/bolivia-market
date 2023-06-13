@@ -41,25 +41,25 @@ export default function AddInfoCompany({ companyId }) {
   }, [companyId]);
 
   const handlePortadaModalConfirm = async (selectedImage) => {
-    try {
-      // Cargar la imagen de portada al bucket de Supabase
-      const { data, error } = await supabase.storage
-        .from("comp")
-        .upload(`${companyId}/${selectedImage.name}`, selectedImage);
-      if (error) {
-        throw error;
-      }
-      console.log("Portada image uploaded successfully:", data);
-      // Actualizar el campo de imagen de portada en Supabase
-      await supabase
-        .from("companies")
-        .update({ imagen_portada: selectedImage.name })
-        .eq("id", companyId);
-      // Cerrar el modal de portada
-      setPortadaModalOpen(false);
-    } catch (error) {
-      console.error("Error uploading portada image:", error.message);
-    }
+          try {
+            // Cargar la imagen de portada al bucket de Supabase
+            const { data, error } = await supabase.storage
+              .from("comp")
+              .upload(`${companyId}/${selectedImage.name}`, selectedImage);
+            if (error) {
+              throw error;
+            }
+            console.log("Portada image uploaded successfully:", data);
+            // Actualizar el campo de imagen de portada en Supabase
+            await supabase
+              .from("companies")
+              .update({ imagen_portada: selectedImage.name })
+              .eq("id", companyId);
+            // Cerrar el modal de portada
+            setPortadaModalOpen(false);
+          } catch (error) {
+            console.error("Error uploading portada image:", error.message);
+          }
   };
 
   const handleTituloCatalogoModalConfirm = async (titulo) => {
