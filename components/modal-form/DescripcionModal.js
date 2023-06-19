@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './modal.module.css';
 import { CgClose } from "react-icons/cg";
 
-export default function DescripcionModal({ isOpen, onClose, onConfirm }) {
+export default function DescripcionModal({ isOpen, onClose, onConfirm,currentValue }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ export default function DescripcionModal({ isOpen, onClose, onConfirm }) {
         </button>
         <h3 className={styles.textForm}>agregar descripcion del catalogo</h3>
         <p className={styles.p}>agregar descripcion</p>
-          <textarea className={styles.labelImage}  type="text" value={inputValue} onChange={handleChange} />
+          <textarea className={styles.labelImage}  type="text" value={currentValue} onChange={handleChange} />
         <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>aceptar</button>
       </div>
     </div>

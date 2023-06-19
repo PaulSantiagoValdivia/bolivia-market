@@ -2,13 +2,13 @@
 import { useState } from 'react';
 import styles from './modal.module.css';
 import { CgClose } from "react-icons/cg";
-export default function TituloCatalogoModal({ isOpen, onClose, onConfirm }) {
+export default function TituloCatalogoModal({ isOpen, onClose, onConfirm, currentValue }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-
+  
   return (
     <div className={styles.overlay} >
       <div className={styles.modal}>
@@ -17,7 +17,7 @@ export default function TituloCatalogoModal({ isOpen, onClose, onConfirm }) {
         </button>
         <h3 className={styles.textForm}>agregar imagen de Portada</h3>
         <p className={styles.p}>agregar titulo</p>
-        <textarea  className={styles.labelImage}  type="text" value={inputValue} onChange={handleChange} />
+        <textarea  className={styles.labelImage}  type="text" value={currentValue} onChange={handleChange} />
         <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>aceptar</button>
       </div>
     </div>

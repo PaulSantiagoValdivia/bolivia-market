@@ -128,6 +128,7 @@ export default function AddInfoCompany({ companyId }) {
               isOpen={portadaModalOpen}
               onClose={() => setPortadaModalOpen(false)}
               onConfirm={handlePortadaModalConfirm}
+              currentValue={formData.imagen_portada}
             />
           )}
         </div>
@@ -149,6 +150,7 @@ export default function AddInfoCompany({ companyId }) {
               isOpen={tituloCatalogoModalOpen}
               onClose={() => setTituloCatalogoModalOpen(false)}
               onConfirm={handleTituloCatalogoModalConfirm}
+              currentValue={formData.titulo_catalogo}
             />
           )}
         </div>
@@ -170,6 +172,7 @@ export default function AddInfoCompany({ companyId }) {
               isOpen={descripcionModalOpen}
               onClose={() => setDescripcionModalOpen(false)}
               onConfirm={handleDescripcionModalConfirm}
+              currentValue={formData.descripcion}
             />
           )}
         </div>
@@ -193,6 +196,7 @@ export default function AddInfoCompany({ companyId }) {
               isOpen={bannerModalOpen}
               onClose={() => setBannerModalOpen(false)}
               onConfirm={handleBannerModalConfirm}
+              currentValue={formData.banner}
             />
           )}
         </div>

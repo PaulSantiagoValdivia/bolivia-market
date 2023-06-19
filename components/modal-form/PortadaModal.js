@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import styles from './modal.module.css';
 import { CgClose } from "react-icons/cg";
-export default function PortadaModal({ isOpen, onClose, onConfirm }) {
-  const [inputValue, setInputValue] = useState('');
+export default function PortadaModal({ isOpen, onClose, onConfirm,currentValue }) {
+  const [inputValue, setInputValue] = useState(currentValue);
 
   const handleChange = (e) => {
     const file = e.target.files[0];
