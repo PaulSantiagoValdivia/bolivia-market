@@ -114,8 +114,7 @@ const Dashboard = () => {
             companyId={companyInfo.id}
             onClose={() => setShowCatalogs(false)} />
         </div>
-
-        <AddInfoCompany companyId={companyInfo.id} />
+        {showModal ? <></>:<AddInfoCompany companyId={companyInfo.id} />}
     </div>
   );
 };
