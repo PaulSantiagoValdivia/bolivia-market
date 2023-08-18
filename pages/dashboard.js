@@ -18,7 +18,7 @@ const Dashboard = () => {
   });
   const [showCatalogs, setShowCatalogs] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  
+
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
@@ -94,26 +94,29 @@ const Dashboard = () => {
 
   return (
     <div className={`${styles.main} ${showCatalogs ? styles.blurContent : ''} ${showModal ? styles.modalOpen : ''}`}>
-    <div className={styles.dashboardContainer}>
-      <NavCompany companyName={companyInfo.name}/>
-      <div className={styles.companyInfoContainer}>
-        <h1 className={styles.welcomeText} >Hola, {companyInfo.name}!</h1>
-        <p className={styles.info}>Aqui podras agregar, remover o editar los productos de {companyInfo.name} de este mes.</p>
-      </div>
-      <button className={styles.button} onClick={handleOpenCatalogs}>Agregar Producto</button>
-      <AddInfoCompany companyId={companyInfo.id}  />
-      {showCatalogs && <AddProduct companyId={companyInfo.id} onClose={handleCloseCatalogs} updateItems={updateItems} auth={user.id} />}
-    <Items
-      items={items} 
-      setItems={setItems} 
-      onEditProduct={() => setShowCatalogs(true)} 
-      updateItems={updateItems} 
-      showModal={showModal}
-      setShowModal={setShowModal}
-      companyId={companyInfo.id}
-      onClose={() => setShowCatalogs(false)} />
+      <div className={styles.dashboardContainer}>
+        
+
+          <NavCompany companyName={companyInfo.name} />
+          <div className={styles.companyInfoContainer}>
+            <h1 className={styles.welcomeText} >Hola, {companyInfo.name}!</h1>
+            <p className={styles.info}>Aqui podras agregar, remover o editar los productos de {companyInfo.name} de este mes.</p>
+          </div>
+          <button className={styles.button} onClick={handleOpenCatalogs}>Agregar Producto</button>
+          {showCatalogs && <AddProduct companyId={companyInfo.id} onClose={handleCloseCatalogs} updateItems={updateItems} auth={user.id} />}
+          <Items
+            items={items}
+            setItems={setItems}
+            onEditProduct={() => setShowCatalogs(true)}
+            updateItems={updateItems}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            companyId={companyInfo.id}
+            onClose={() => setShowCatalogs(false)} />
+        </div>
+
+        <AddInfoCompany companyId={companyInfo.id} />
     </div>
-  </div>
   );
 };
 

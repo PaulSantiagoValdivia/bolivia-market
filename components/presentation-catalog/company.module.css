@@ -81,10 +81,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
-  position: sticky;
+  position: fixed;
   width: 380px;
   height: 62px;
-  top: 770px;
+  bottom: 0px;
   left: calc(50% - 190px);
   /* el 50% es el centro de la pantalla y 190px es la mitad del ancho del botón */
   background: #FFFFFF;
@@ -133,7 +133,5 @@
   .info{
       margin-bottom: 30px;
   }
-  .backCatalog{
-top: auto;
+  
   }
-}

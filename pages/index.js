@@ -4,10 +4,10 @@ import NavBar from "@/components/navl-la-constru/NavBar"
 
 export default function LaConstru() {
   return (
-    <main>
-      <NavBar />
+    <>
+      <NavBar/>
       <CatalogCompanies />
       <Footer/>
-    </main>
+    </>
   )
 } 
