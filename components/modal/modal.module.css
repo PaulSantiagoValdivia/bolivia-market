@@ -14,7 +14,7 @@
   .modalContainer {
 
     margin-top: 247px;
-    margin-left: 356px;
+    left: calc(50% - 190px);
   }
 }
 

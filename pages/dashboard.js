@@ -112,7 +112,7 @@ const Dashboard = () => {
             companyId={companyInfo.id}
             onClose={() => setShowCatalogs(false)} />
         </div>
-        {showCatalogs ? <></>:<AddInfoCompany companyId={companyInfo.id} />}
+        <AddInfoCompany  companyId={companyInfo.id} />
     </div>
   );
 };
