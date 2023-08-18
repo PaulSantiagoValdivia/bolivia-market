@@ -95,8 +95,6 @@ const Dashboard = () => {
   return (
     <div className={`${styles.main} ${showCatalogs ? styles.blurContent : ''} ${showModal ? styles.modalOpen : ''}`}>
       <div className={styles.dashboardContainer}>
-        
-
           <NavCompany companyName={companyInfo.name} />
           <div className={styles.companyInfoContainer}>
             <h1 className={styles.welcomeText} >Hola, {companyInfo.name}!</h1>
@@ -114,7 +112,7 @@ const Dashboard = () => {
             companyId={companyInfo.id}
             onClose={() => setShowCatalogs(false)} />
         </div>
-        {showModal ? <></>:<AddInfoCompany companyId={companyInfo.id} />}
+        {showCatalogs ? <></>:<AddInfoCompany companyId={companyInfo.id} />}
     </div>
   );
 };
