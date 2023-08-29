@@ -4,7 +4,7 @@ const Footer =  ()=>{
   const router= useRouter();
 return(
   <div className={styles.footerContent}> 
-   <p className={styles.inicio} onClick={() => router.push("https://la-constru.vercel.app/inicio")}>
+   <p className={styles.inicio} onClick={() => router.push("/inicio")}>
     si eres provedor da click aca para inicar session
     </p>
   </div>

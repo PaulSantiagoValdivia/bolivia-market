@@ -21,7 +21,7 @@ export default function PresntationCompany({ company }) {
         <a className={styles.viewProducts} onClick={handleViewProducts} >Ver productos</a>
       </div>
       <p className={styles.info}>PRODUCTOS DESTACADOS</p>
-      <button className={styles.backCatalog} onClick={() => router.push("https://la-constru.vercel.app/")}>
+      <button className={styles.backCatalog} onClick={() => router.push("https://laconstru.vercel.app/")}>
         <p className={styles.backText}>ver otros catálogos</p>
         <p className={styles.date}>abril 2023</p>
       </button>
