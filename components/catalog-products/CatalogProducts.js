@@ -18,17 +18,22 @@ export default function CatalogProducts({ catalogs, companyId }) {
       }
 
       const imageUrls = {};
+      const promises = [];
 
-      await Promise.all(imagesData.map(async (image) => {
-        const { data, error: downloadError } = await supabase.storage
+      imagesData.forEach((image) => {
+        const promise = supabase.storage
           .from('img2')
-          .download(`${companyId}/${image.name}`);
+          .download(`${companyId}/${image.name}`)
+          .then(({ data, error: downloadError }) => {
+            if (!downloadError) {
+              imageUrls[image.name] = URL.createObjectURL(data);
+            }
+          });
 
-        if (!downloadError) {
-          imageUrls[image.name] = URL.createObjectURL(data);
-        }
-      }));
+        promises.push(promise);
+      });
 
+      await Promise.all(promises);
       setImages(imageUrls);
     };
 

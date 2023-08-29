@@ -50,13 +50,13 @@ export default function CatalogCompanies() {
           return null;
         }
 
-        return { companyId, url: URL.createObjectURL(data) };
+        return { companyId, data };
       });
 
       const downloadedImages = await Promise.all(imagePromises);
       const images = downloadedImages.reduce((acc, image) => {
         if (image) {
-          acc[image.companyId] = image.url;
+          acc[image.companyId] = URL.createObjectURL(image.data);
         }
         return acc;
       }, {});
@@ -81,14 +81,16 @@ export default function CatalogCompanies() {
             key={company.id}
             onClick={() => redirectToCatalog(company.name)}
           >
-            <Image
-              className={styles.imgCompanies}
-              src={companyImage} // Cargar imágenes optimizadas y de tamaño adecuado en el bucket
-              alt={company.name}
-              width={100}
-              height={225}
-              loading="lazy"
-            />
+            {companyImage && (
+              <Image
+                className={styles.imgCompanies}
+                src={companyImage}
+                alt={company.name}
+                width={100}
+                height={225}
+                loading="lazy"
+              />
+            )}
             <a className={styles.nameCompanies}>
               {company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}
             </a>

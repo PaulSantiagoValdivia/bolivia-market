@@ -101,7 +101,6 @@
 .exit {
   position: absolute;
   background-color: transparent;
-
   cursor: pointer;
   top: 40px;
   font-size: 28px;
@@ -267,6 +266,7 @@
   line-height: 23px;
   width: 131px;
   height: 40px;
+  cursor: pointer;
 }
 
 /* option.module.css */
