@@ -13,7 +13,8 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const currencyOptions = ['USD', 'BS'];
-
+  const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+  
   useEffect(() => {
     const fetchItem = async () => {
       if (!itemId) return;
@@ -58,9 +59,15 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setSelectedImage(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreviewUrl(reader.result);
+    };
+    reader.readAsDataURL(file);
     setFormState({ ...formState, image: file.name });
     setFormErrors({ ...formErrors, image: '' });
   };
+
 
 
   const validateForm = () => {
@@ -202,7 +209,14 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
         <p className={styles.textForm} >agregar imagen</p>
         <label className={styles.labelImage} >
           <input className={styles.inputImage} type="file" onChange={handleImageChange} />
-          {selectedImage ? selectedImage.name : 'Seleccionar imagen'}
+          {imagePreviewUrl && (
+            <img
+              src={imagePreviewUrl}
+              alt="Preview"
+              className={styles.imagePreview}
+            />
+          )}
+          {selectedImage ? '' : 'Seleccionar imagen'}
         </label>
         {formErrors.image && (
           <div className={styles.errorBoxImage}>

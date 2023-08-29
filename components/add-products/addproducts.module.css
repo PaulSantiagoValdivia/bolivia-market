@@ -101,7 +101,7 @@
 .exit {
   position: absolute;
   background-color: transparent;
-  
+
   cursor: pointer;
   top: 40px;
   font-size: 28px;
@@ -113,6 +113,10 @@
 }
 
 
+.imagePreview {
+  width: 200px;
+  height: 120px;
+}
 
 /* inputDescription.module.css */
 .inputDescription {

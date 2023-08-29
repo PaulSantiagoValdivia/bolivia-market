@@ -22,6 +22,9 @@ const Dashboard = () => {
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
+      if(!user){
+        router.push('/inicio')
+      }
     });
 
     return () => {

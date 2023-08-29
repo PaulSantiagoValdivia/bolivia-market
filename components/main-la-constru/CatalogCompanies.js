@@ -62,7 +62,6 @@ export default function CatalogCompanies() {
       }, {});
 
       setImages(images);
-      console.log(images);
     };
 
     fetchImages();
@@ -70,7 +69,6 @@ export default function CatalogCompanies() {
 
   const redirectToCatalog = (companyName) => {
     router.push(`${encodeURIComponent(companyName)}`);
-    console.log(companyName);
   };
 
   return (
@@ -85,10 +83,11 @@ export default function CatalogCompanies() {
           >
             <Image
               className={styles.imgCompanies}
-              src={companyImage}
+              src={companyImage} // Cargar imágenes optimizadas y de tamaño adecuado en el bucket
               alt={company.name}
               width={100}
               height={225}
+              loading="lazy"
             />
             <a className={styles.nameCompanies}>
               {company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}

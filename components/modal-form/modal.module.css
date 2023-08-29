@@ -15,7 +15,7 @@
   padding: 20px;
   border-radius: 5px;
   width: 327px;
-  height: 445px;
+  height: 511px;
 
 }
 
@@ -76,7 +76,7 @@
   width: 327px;
   display: flex;
   flex-direction: column;
-  height: 131px;
+  min-height: 170px;
   border: 1px solid #292D32;
   font-family: 'Outfit';
   font-style: normal;
@@ -118,4 +118,9 @@
 
   color: #2E2E2E;
 
+}
+
+.imagePreview{
+  width: -webkit-fill-available;
+  height: 228px;
 }
