@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import styles from './email.module.css'
+
 const EmailInput = () => {
   const [status, setStatus] = useState('pending')
   const [email, setEmail] = useState('')
+
   const handleLogin = async () => {
     // Verificar si el correo electrónico ingresado está autorizado
     const { data, error } = await supabase
@@ -22,11 +24,13 @@ const EmailInput = () => {
       return
     };
   
-    const { error: otpError } = await supabase.auth.signInWithOtp({ email: email
-    ,
-  options:{
-    emailRedirectTo: 'https://laconstru.vercel.app/dashboard'
-  }, });
+    const { error: otpError } = await supabase.auth.signInWithOtp({
+      email: email,
+      options: {
+        emailRedirectTo: 'https://laconstru.vercel.app/dashboard',
+      },
+    });
+    
   
     if (otpError) {
       setStatus('error')

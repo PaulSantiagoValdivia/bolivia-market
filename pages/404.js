@@ -12,7 +12,7 @@ const ErrorPage = () => {
       <div className={styles.text}>
 
         <h1 className={styles.title}>Esta página no existe</h1>
-        <button className={styles.button} onClick={() => router.push("/inicio")}>regresar</button>
+        <button className={styles.button} onClick={() => router.push("/")}>regresar</button>
       </div>
     </div>
 
