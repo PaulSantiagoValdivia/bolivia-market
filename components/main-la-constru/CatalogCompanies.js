@@ -56,7 +56,7 @@ export default function CatalogCompanies({companies}) {
   }, [companies]);
 
   const redirectToCatalog = (companyName) => {
-    router.push(`/provedor/${encodeURIComponent(companyName)}`);
+    router.push(`/proveedor/${encodeURIComponent(companyName)}`);
   };
 
   return (
