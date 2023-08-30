@@ -1,5 +1,5 @@
 .footerContent{
-  position: absolute;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,3 +20,8 @@
 .inicio{
   cursor: pointer;
 }
+@media (min-width: 1240px) {
+  .footerContent {
+     position: absolute;
+   }
+ }

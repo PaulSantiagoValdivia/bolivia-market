@@ -65,6 +65,10 @@
 
 }  
 
+.submitButton:hover{
+  background-color: #3a3a3a;
+  cursor: pointer;
+}
 
 .inputImage {
   display: none;
@@ -88,6 +92,7 @@
   align-items: center;
   margin-bottom: 120px;
   text-align: center;
+  cursor: auto;
 }
 
 .textForm {
@@ -104,6 +109,7 @@
   text-align: center;
   margin-bottom: 50px;
   margin-top: 80px;
+  
 }
 
 .p {

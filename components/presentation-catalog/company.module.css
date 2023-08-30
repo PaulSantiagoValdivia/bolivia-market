@@ -1,5 +1,18 @@
 .container {
   text-align: center;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 180%;
+    width: 200%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
 }
 
 .presentation{
@@ -17,7 +30,7 @@
   font-size: 25px;
   line-height: 38px;
   /* identical to box height */
-
+  
   color: #FDB600;
 }
 
@@ -70,8 +83,8 @@
   font-size: 22px;
   line-height: 28px;
   /* identical to box height */
- text-align: center;
-
+  text-align: center;
+  
   color: #000000;
 }
 
@@ -109,6 +122,7 @@
     flex-direction: row;
     margin-left: 40px;
     justify-content: flex-start;
+    justify-content: space-between;
   }
   .container{
     text-align: left;

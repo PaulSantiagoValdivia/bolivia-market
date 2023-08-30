@@ -3,23 +3,23 @@ import { supabase } from '@/lib/supabaseClient';
 import styles from './catalog.module.css';
 import Image from 'next/image';
 
-export default function CatalogProducts({ catalogs, companyId }) {
+export default function CatalogProducts({ catalogs, companyId}) {
   const [images, setImages] = useState({});
   
   useEffect(() => {
     const fetchImages = async () => {
       const { data: imagesData, error } = await supabase.storage
-        .from('img2')
-        .list(`${companyId}/`);
-
+      .from('img2')
+      .list(`${companyId}/`);
+      
       if (error) {
         console.error(error);
         return;
       }
-
+      
       const imageUrls = {};
       const promises = [];
-
+      
       imagesData.forEach((image) => {
         const promise = supabase.storage
           .from('img2')
@@ -29,12 +29,11 @@ export default function CatalogProducts({ catalogs, companyId }) {
               imageUrls[image.name] = URL.createObjectURL(data);
             }
           });
-
-        promises.push(promise);
-      });
-
-      await Promise.all(promises);
-      setImages(imageUrls);
+          
+          promises.push(promise);
+        });
+        await Promise.all(promises);
+        setImages(imageUrls);
     };
 
     fetchImages();

@@ -1,0 +1,38 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.loadingText {
+  font-size: 48px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  animation: mixLetters 3s infinite;
+}
+
+.yellowText {
+  color: #ffd700;
+}
+
+.blackText {
+  color: #000000;
+}
+
+@keyframes mixLetters {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  75% {
+    transform: translateX(20px);
+  }
+}

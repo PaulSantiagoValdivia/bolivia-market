@@ -47,15 +47,13 @@ export default function Banner({ companyId }) {
   return (
     <div className={styles.container}>
       {bannerUrl && (
-        <div className={styles.bannerContainer}>
-          <Image
-            className={styles.banner}
-            src={bannerUrl}
-            alt="banner"
-            width={1510}
-            height={520}
-          />
-        </div>
+        <Image
+          className={styles.banner}
+          src={bannerUrl}
+          alt="banner"
+          width={1510}
+          height={520}
+        />
       )}
     </div>
   );

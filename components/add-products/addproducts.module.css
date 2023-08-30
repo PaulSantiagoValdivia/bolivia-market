@@ -175,6 +175,7 @@
   color: #7D7E7E;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 /* div.module.css */
@@ -217,7 +218,9 @@
   border: none;
   outline: none;
 }
-
+ .button:hover{
+  background-color: #3e3e3e;
+ }
 /* textForm.module.css */
 .textForm {
   font-family: 'Outfit';

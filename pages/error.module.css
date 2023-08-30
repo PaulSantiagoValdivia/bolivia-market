@@ -1,0 +1,53 @@
+
+.title {
+  color: var(--neutral-700, #8E989A);
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px; /* 150% */
+}
+
+.message {
+  font-size: 1.5rem;
+}
+
+.container {
+  display: flex;
+align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.button {
+  margin-top: 31px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  cursor: pointer;
+  width: 327px;
+  height: 43px;
+  left: 44px;
+  top: 771px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  background: #000000;
+  border: 1px solid #292D32;
+  color: #FDB600;
+  border: none;
+  outline: none;
+}
+ .button:hover{
+  background-color: #3e3e3e;
+ }

@@ -17,7 +17,19 @@
   align-items: center;
   width: 171px;
   height: 260px;
+  animation: slidein 3s ;
+}
 
+@keyframes slidein {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 171px;
+    opacity: 1;
+  }
 }
 .containerCompanies:hover {
   transform: scale(1.1);
@@ -33,7 +45,6 @@
   background-repeat: no-repeat;
 cursor: pointer;
 }
-
 .imgCompanies:hover {
   opacity: 0.8;
 }

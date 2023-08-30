@@ -14,7 +14,6 @@
   flex-direction: column;
   width: 348px;
 }
-
 .delate {
   display: flex;
   flex-direction: row;
@@ -30,6 +29,9 @@
   color: white;
   border: none;
   outline: none;
+}
+.delate:hover{
+  background-color: #e84f4f;
 }
 .edit{
   box-sizing: border-box;
@@ -51,9 +53,12 @@ line-height: 23px;
 /* identical to box height */
 
 cursor: pointer;
-color: #7D7E7E;
+color: #292D32;
 }
 
+.edit:hover {
+  background-color: #aaa;
+}
 .buttonContainer {
   display: flex;
   flex-direction: row;

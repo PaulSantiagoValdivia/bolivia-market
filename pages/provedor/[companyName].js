@@ -4,12 +4,14 @@ import { supabase } from '@/lib/supabaseClient';
 import Banner from '@/components/banner-catalog/Banner';
 import PresntationCompany from '@/components/presentation-catalog/PresentationCompany';
 import CatalogProducts from '@/components/catalog-products/CatalogProducts';
+import Loading from '@/components/loading/Loading';
 
 const CompanyCatalogPage = () => {
   const router = useRouter();
   const { companyName } = router.query;
   const [company, setCompany] = useState({});
   const [catalogs, setCatalogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCompany = async () => {
@@ -36,8 +38,8 @@ const CompanyCatalogPage = () => {
         console.error(catalogsError);
         return;
       }
-
       setCatalogs(catalogsData);
+      setLoading(false)
     };
 
     if (companyName) {
@@ -47,11 +49,17 @@ const CompanyCatalogPage = () => {
 
   return (
     <>
-      <Banner companyId={company.id}/>
-      <PresntationCompany company={company} />  
-      <CatalogProducts catalogs={catalogs} companyId={company.id} />
-      </>
-  );
+      {loading ? ( // Mostrar pantalla de carga si loading es true
+        <Loading />
+      ) : (
+        <>
+          <Banner companyId={company.id} />
+          <PresntationCompany company={company} />
+          <CatalogProducts catalogs={catalogs} companyId={company.id} loading={setLoading} />
+        </>
+      )}
+    </>
+  )
 };
 
 export default CompanyCatalogPage;

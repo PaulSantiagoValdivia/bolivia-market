@@ -3,7 +3,18 @@
 }
 
 .banner{
+  left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  animation: fadeIn 1s ease;
+}
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -4,24 +4,11 @@ import styles from './catalog.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-export default function CatalogCompanies() {
-  const [companies, setCompanies] = useState([]);
+export default function CatalogCompanies({companies}) {
   const [images, setImages] = useState({});
   const router = useRouter();
+  
 
-  useEffect(() => {
-    const fetchCompanies = async () => {
-      const { data, error } = await supabase.from('companies').select('*');
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      setCompanies(data);
-    };
-
-    fetchCompanies();
-  }, []);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -62,13 +49,14 @@ export default function CatalogCompanies() {
       }, {});
 
       setImages(images);
+
     };
 
     fetchImages();
   }, [companies]);
 
   const redirectToCatalog = (companyName) => {
-    router.push(`${encodeURIComponent(companyName)}`);
+    router.push(`/provedor/${encodeURIComponent(companyName)}`);
   };
 
   return (
