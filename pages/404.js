@@ -3,15 +3,16 @@ import React from 'react';
 import styles from './error.module.css';
 import Logo from '@/components/atoms/Logo';
 import { useRouter } from 'next/router';
+
 const ErrorPage = () => {
-  const route = useRouter();
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <Logo/>
       <div className={styles.text}>
 
         <h1 className={styles.title}>Esta página no existe</h1>
-        <button className={styles.button} onClick={route.push('/')}>regresar</button>
+        <button className={styles.button} onClick={() => router.push("/inicio")}>regresar</button>
       </div>
     </div>
 
