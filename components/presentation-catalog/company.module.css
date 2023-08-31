@@ -87,12 +87,12 @@
   text-align: center;
   
   color: #000000;
-  animation-duration: 4s;
-  animation-name: scale;
+  animation-duration: 2s;
+  animation-name: sc;
   transform-origin: center;
 }
 
-@keyframes scale {
+@keyframes sc{
   from {
     opacity: 0;
   }
@@ -115,7 +115,7 @@
   left: calc(50% - 190px);
   /* el 50% es el centro de la pantalla y 190px es la mitad del ancho del botón */
   background: #FFFFFF;
-  border: 1px solid #BDBCC3;
+  border: 1px solid #e1dfdf;
   border-radius: 8px;
   cursor: pointer;
   animation-duration: 3s;
@@ -125,11 +125,12 @@
 
 @keyframes scale {
   from {
-
     opacity: 0;
+    margin-bottom: 100%;
   }
   
   to {
+    margin-bottom: 0%;
     opacity: 1;
   }
 }
