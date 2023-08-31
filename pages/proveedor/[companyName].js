@@ -24,12 +24,19 @@ const CompanyCatalogPage = () => {
         const response = await fetch(`/api/company?companyName=${companyName}`);
         const data = await response.json();
 
+        const { data: imageData, error: downloadError } = await supabase.storage
+          .from('comp')
+          .download(`${data.company.id}/${data.company.banner}`); // Cambio realizado aquí
+
+        if (downloadError) {
+          console.error(downloadError);
+          return;
+        }
+        const bannerImage = URL.createObjectURL(imageData);
+        setBannerUrl(bannerImage);
         setCompany(data.company);
         setCatalogs(data.catalogs);
-        setBannerUrl(data.company.banner);
-        setTimeout(() => {
-          setLoading(false); // Supongo que estás usando esto para cambiar el estado de carga
-        }, 500);
+        setLoading(false);
       } catch (error) {
         setLoading(false);
       }

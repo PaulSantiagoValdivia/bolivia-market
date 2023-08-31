@@ -24,7 +24,7 @@
 }
 
 .containerCompanies > *:nth-child(1) {
-  animation: scaleIn 3s ease-in-out;
+  animation: scaleIn 1s ease-in-out;
 }
 
 .containerCompanies > *:nth-child(2) {
