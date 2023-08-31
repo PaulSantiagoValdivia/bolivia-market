@@ -24,14 +24,12 @@ const Dashboard = () => {
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
-      if (!session) {
-        router.push('/inicio')
-      }
+      
     });
 
     return () => {
-      if (authListener && authListener.unsubscribe) {
-        authListener.unsubscribe();
+      if (!authListener) {
+        router.push('/inicio')
       }
     };
   }, []);
