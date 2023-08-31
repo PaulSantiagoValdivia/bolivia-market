@@ -12,21 +12,24 @@ const CompanyCatalogPage = () => {
   const [company, setCompany] = useState({});
   const [catalogs, setCatalogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [bannerUrl, setBannerUrl] = useState('');
 
   useEffect(() => {
     const fetchCompany = async () => {
-      // Utilizar el parámetro `companyName` en la consulta a la base de datos
-      const { data: companyData, error } = await supabase
+      if (!companyName) {
+        return;
+      }
+
+      const { data: companyData, error: companyError } = await supabase
         .from('companies')
         .select('*')
         .eq('name', companyName)
         .single();
 
-      if (error) {
-        console.error(error);
+      if (companyError) {
+        console.error(companyError);
         return;
       }
-
       setCompany(companyData);
 
       const { data: catalogsData, error: catalogsError } = await supabase
@@ -39,27 +42,53 @@ const CompanyCatalogPage = () => {
         return;
       }
       setCatalogs(catalogsData);
-      setLoading(false)
+      const { data: bannerData, error: bannerError } = await supabase
+        .from('companies')
+        .select('banner')
+        .eq('id', companyData.id)
+        .single();
+
+      if (bannerError) {
+        console.error(bannerError);
+        return;
+      }
+
+      const bannerImageName = bannerData.banner;
+      if (!bannerImageName) {
+        console.error('No se encontró el nombre de la imagen de banner');
+        return;
+      }
+
+      const { data: imageData, error: downloadError } = await supabase.storage
+        .from('comp')
+        .download(`${companyData.id}/${bannerImageName}`);
+
+      if (downloadError) {
+        console.error(downloadError);
+        return;
+      }
+
+      const bannerImageUrl = URL.createObjectURL(imageData);
+      setBannerUrl(bannerImageUrl);
+      setLoading(false);
     };
 
-    if (companyName) {
-      fetchCompany();
-    }
+    fetchCompany();
   }, [companyName]);
 
   return (
     <>
-      {loading ? ( // Mostrar pantalla de carga si loading es true
+      {loading ? (
         <Loading />
       ) : (
         <>
-          <Banner companyId={company.id} />
+          <Banner companyId={company.id} banner={bannerUrl} />
           <PresntationCompany company={company} />
-          <CatalogProducts catalogs={catalogs} companyId={company.id} loading={setLoading} />
+          <CatalogProducts catalogs={catalogs} companyId={company.id} />
         </>
       )}
     </>
-  )
+  );
 };
 
 export default CompanyCatalogPage;

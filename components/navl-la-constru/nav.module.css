@@ -2,12 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 30px 50px;
+  padding: 50px 30px 30px;
   gap: 10px;
   background: #F5F4F4;
   width: auto;
+  animation-duration: 2s;
+  animation-name: scalein;
+  transform-origin: center;
+  margin-bottom: 20px;
 }
 
+@keyframes scalein {
+  from {
+    margin-bottom: 50%;
+    opacity: 0;
+  }
+  
+  to {
+    margin: 0%;
+    opacity: 1;
+  }
+}
 .description {
   font-family: 'Poppins';
   font-style: normal;

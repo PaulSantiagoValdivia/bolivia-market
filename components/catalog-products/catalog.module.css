@@ -8,20 +8,23 @@
   gap: 25px;
   flex-wrap: wrap;
   padding-bottom: 60px;
-  animation: slidein 3s ;
+  animation-duration: 3s;
+  animation-name: scalein;
+  transform-origin: center;
 }
 
-@keyframes slidein {
+@keyframes scalein {
   from {
-    margin-left: 100%;
+    transform: scale(0);
     opacity: 0;
   }
-
+  
   to {
-    margin-left: 0%;
+    transform: scale(1);
     opacity: 1;
   }
 }
+
 
 .containerProducts {
   display: flex;
