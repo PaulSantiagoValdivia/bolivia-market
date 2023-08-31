@@ -9,19 +9,16 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-name: scalein;
-  transform-origin: center;
 }
 
 @keyframes scalein {
   from {
-    transform: scale(0);
     opacity: 0;
   }
   
   to {
-    transform: scale(1);
     opacity: 1;
   }
 }
@@ -122,11 +119,11 @@
   border-radius: 8px;
   cursor: pointer;
   animation-duration: 3s;
-  animation-name: scalein;
+  animation-name: scale;
   transform-origin: center;
 }
 
-@keyframes scalein {
+@keyframes scale {
   from {
     margin-bottom: 100%;
     opacity: 0;
@@ -155,7 +152,22 @@
     margin-left: 40px;
     justify-content: flex-start;
     justify-content: space-between;
+    animation-duration: 3s;
+    animation-name: scalein;
   }
+  
+  @keyframes scalein {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
   .container{
     text-align: left;
   }

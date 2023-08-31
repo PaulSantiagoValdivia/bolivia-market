@@ -6,23 +6,21 @@
   gap: 10px;
   background: #F5F4F4;
   width: auto;
-  animation-duration: 2s;
-  animation-name: scalein;
-  transform-origin: center;
-  margin-bottom: 20px;
+  animation: scaleIn 2s ease;
 }
 
-@keyframes scalein {
+@keyframes scaleIn {
   from {
-    margin-bottom: 50%;
+    transform: scale(0);
     opacity: 0;
   }
-  
+
   to {
-    margin: 0%;
+    transform: scale(1);
     opacity: 1;
   }
 }
+
 .description {
   font-family: 'Poppins';
   font-style: normal;
