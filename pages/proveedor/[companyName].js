@@ -15,65 +15,27 @@ const CompanyCatalogPage = () => {
   const [bannerUrl, setBannerUrl] = useState('');
 
   useEffect(() => {
-    const fetchCompany = async () => {
+    const fetchData = async () => {
       if (!companyName) {
         return;
       }
 
-      const { data: companyData, error: companyError } = await supabase
-        .from('companies')
-        .select('*')
-        .eq('name', companyName)
-        .single();
+      try {
+        const response = await fetch(`/api/company?companyName=${companyName}`);
+        const data = await response.json();
 
-      if (companyError) {
-        console.error(companyError);
-        return;
+        setCompany(data.company);
+        setCatalogs(data.catalogs);
+        setBannerUrl(data.company.banner);
+        setTimeout(() => {
+          setLoading(false); // Supongo que estás usando esto para cambiar el estado de carga
+        }, 500);
+      } catch (error) {
+        setLoading(false);
       }
-      setCompany(companyData);
-
-      const { data: catalogsData, error: catalogsError } = await supabase
-        .from('catalogs')
-        .select('*')
-        .eq('company_id', companyData.id);
-
-      if (catalogsError) {
-        console.error(catalogsError);
-        return;
-      }
-      setCatalogs(catalogsData);
-      const { data: bannerData, error: bannerError } = await supabase
-        .from('companies')
-        .select('banner')
-        .eq('id', companyData.id)
-        .single();
-
-      if (bannerError) {
-        console.error(bannerError);
-        return;
-      }
-
-      const bannerImageName = bannerData.banner;
-      if (!bannerImageName) {
-        console.error('No se encontró el nombre de la imagen de banner');
-        return;
-      }
-
-      const { data: imageData, error: downloadError } = await supabase.storage
-        .from('comp')
-        .download(`${companyData.id}/${bannerImageName}`);
-
-      if (downloadError) {
-        console.error(downloadError);
-        return;
-      }
-
-      const bannerImageUrl = URL.createObjectURL(imageData);
-      setBannerUrl(bannerImageUrl);
-      setLoading(false);
     };
 
-    fetchCompany();
+    fetchData();
   }, [companyName]);
 
   return (
@@ -82,7 +44,7 @@ const CompanyCatalogPage = () => {
         <Loading />
       ) : (
         <>
-          <Banner companyId={company.id} banner={bannerUrl} />
+          <Banner banner={bannerUrl} companyId={company.id} />
           <PresntationCompany company={company} />
           <CatalogProducts catalogs={catalogs} companyId={company.id} />
         </>

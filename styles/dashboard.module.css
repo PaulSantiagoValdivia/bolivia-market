@@ -28,7 +28,7 @@
 .main {
   width: 100%;
   height: 100%;
-  animation: slidein 3s;
+  animation: slidein 1s;
 }
 
 @keyframes slidein {

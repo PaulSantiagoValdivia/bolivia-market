@@ -3,7 +3,7 @@
   width: 100vh;
   height: 100vh;
   margin: 0 auto;
-  animation: slidein 3s ;
+  animation: slidein 1s ;
 }
 
 @keyframes slidein {

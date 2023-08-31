@@ -125,12 +125,11 @@
 
 @keyframes scale {
   from {
-    margin-bottom: 100%;
+
     opacity: 0;
   }
   
   to {
-    margin: 0%;
     opacity: 1;
   }
 }
