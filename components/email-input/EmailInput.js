@@ -27,7 +27,7 @@ const EmailInput = () => {
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email: email,
       options: {
-        emailRedirectTo: 'http://localhost:3000/dashboard',
+        emailRedirectTo: 'https://laconstru.vercel.app/dashboard',
       },
     });
     
