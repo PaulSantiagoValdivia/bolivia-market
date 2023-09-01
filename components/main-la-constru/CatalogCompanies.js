@@ -23,7 +23,8 @@ export default function CatalogCompanies({ companies, images, redirectToCatalog 
                 loading="lazy"
               />
             )}
-            <a className={styles.nameCompanies}>
+            <a className={styles.nameCompanies}
+            >
               {company?.name?.charAt(0).toUpperCase() + company?.name?.substring(1)}
             </a>
           </div>

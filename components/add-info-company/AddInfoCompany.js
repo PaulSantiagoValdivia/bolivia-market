@@ -1,116 +1,119 @@
-  import { supabase } from "@/lib/supabaseClient";
-  import { useState, useEffect } from "react";
-  import styles from "./addInfo.module.css";
-  import PortadaModal from "../modal-form/PortadaModal";
-  import TituloCatalogoModal from "../modal-form/TituloCatalogoModal";
-  import DescripcionModal from "../modal-form/DescripcionModal";
-  import BannerModal from "../modal-form/BannerModal";
+import { supabase } from "@/lib/supabaseClient";
+import { useState, useEffect } from "react";
+import styles from "./addInfo.module.css";
+import PortadaModal from "../modal-form/PortadaModal";
+import TituloCatalogoModal from "../modal-form/TituloCatalogoModal";
+import DescripcionModal from "../modal-form/DescripcionModal";
+import BannerModal from "../modal-form/BannerModal";
 
-  export default function AddInfoCompany({ companyId }) {
-    const [formData, setFormData] = useState({
-      imagen_portada: "",
-      titulo_catalogo: "",
-      descripcion: "",
-      banner: ""
-    });
+export default function AddInfoCompany({ companyId }) {
+  const [formData, setFormData] = useState({
+    imagen_portada: "",
+    titulo_catalogo: "",
+    descripcion: "",
+    banner: ""
+  });
 
-    const [portadaModalOpen, setPortadaModalOpen] = useState(false);
-    const [tituloCatalogoModalOpen, setTituloCatalogoModalOpen] = useState(false);
-    const [descripcionModalOpen, setDescripcionModalOpen] = useState(false);
-    const [bannerModalOpen, setBannerModalOpen] = useState(false);
+  const [portadaModalOpen, setPortadaModalOpen] = useState(false);
+  const [tituloCatalogoModalOpen, setTituloCatalogoModalOpen] = useState(false);
+  const [descripcionModalOpen, setDescripcionModalOpen] = useState(false);
+  const [bannerModalOpen, setBannerModalOpen] = useState(false);
 
-    useEffect(() => {
-      const fetchCompanyInfo = async () => {
-        try {
-          const { data, error } = await supabase
-            .from("companies")
-            .select()
-            .eq("id", companyId)
-            .single();
-          if (error) {
-            throw error;
-          }
-          if (data) {
-            setFormData(data);
-          }
-        } catch (error) {
-          console.error("Error al obtener los datos de la compañía:", error.message);
-        }
-      };
-      fetchCompanyInfo();
-    }, [companyId]);
-
-    const handlePortadaModalConfirm = async (selectedImage) => {
+  useEffect(() => {
+    const fetchCompanyInfo = async () => {
       try {
-        // Cargar la imagen de portada al bucket de Supabase
-        const { data, error } = await supabase.storage
-          .from("comp")
-          .upload(`${companyId}/${selectedImage.name}`, selectedImage);
+        const { data, error } = await supabase
+          .from("companies")
+          .select()
+          .eq("id", companyId)
+          .single();
         if (error) {
           throw error;
         }
-        console.log("Portada image uploaded successfully:", data);
-        // Actualizar el campo de imagen de portada en Supabase
-        await supabase
-          .from("companies")
-          .update({ imagen_portada: selectedImage.name })
-          .eq("id", companyId);
-        // Cerrar el modal de portada
-        setPortadaModalOpen(false);
-      } catch (error) {
-        console.error("Error uploading portada image:", error.message);
-      }
-    };
-
-    const handleTituloCatalogoModalConfirm = async (titulo) => {
-      try {
-        await supabase
-          .from("companies")
-          .update({ titulo_catalogo: titulo })
-          .eq("id", companyId);
-        setTituloCatalogoModalOpen(false);
-      } catch (error) {
-        console.error("Error al actualizar el título del catálogo:", error.message);
-      }
-    };
-
-    const handleDescripcionModalConfirm = async (descripcion) => {
-      try {
-        await supabase
-          .from("companies")
-          .update({ descripcion: descripcion })
-          .eq("id", companyId);
-        setDescripcionModalOpen(false);
-      } catch (error) {
-        console.error("Error al actualizar la descripción:", error.message);
-      }
-    };
-
-    const handleBannerModalConfirm = async (selectedImage) => {
-      try {
-        // Cargar la imagen del banner al bucket de Supabase
-        const { data, error } = await supabase.storage
-          .from("comp")
-          .upload(`${companyId}/${selectedImage.name}`, selectedImage);
-        if (error) {
-          throw error;
+        if (data) {
+          setFormData(data);
         }
-        console.log("Banner image uploaded successfully:", data);
-        // Actualizar el campo de banner en Supabase
-        await supabase
-          .from("companies")
-          .update({ banner: selectedImage.name })
-          .eq("id", companyId);
-        // Cerrar el modal de banner
-        setBannerModalOpen(false);
       } catch (error) {
-        console.error("Error uploading banner image:", error.message);
+        console.error("Error al obtener los datos de la compañía:", error.message);
       }
     };
+    fetchCompanyInfo();
+  }, [companyId]);
 
-    return (
-      <div className={styles.container}>
-        <div className={styles.content}>
+  const handlePortadaModalConfirm = async (selectedImage) => {
+    try {
+      const nameImage = `${Date.now()}${selectedImage.name}`; 
+      
+      // Cargar la imagen de portada al bucket de Supabase
+      const { data, error } = await supabase.storage
+        .from("comp")
+        .upload(`${companyId}/${nameImage}`, selectedImage);
+      if (error) {
+        throw error;
+      }
+      console.log("Portada image uploaded successfully:", data);
+      // Actualizar el campo de imagen de portada en Supabase
+      await supabase
+        .from("companies")
+        .update({ imagen_portada: nameImage })
+        .eq("id", companyId);
+      // Cerrar el modal de portada
+      setPortadaModalOpen(false);
+    } catch (error) {
+      console.error("Error uploading portada image:", error.message);
+    }
+  };
+
+  const handleTituloCatalogoModalConfirm = async (titulo) => {
+    try {
+      await supabase
+        .from("companies")
+        .update({ titulo_catalogo: titulo })
+        .eq("id", companyId);
+      setTituloCatalogoModalOpen(false);
+    } catch (error) {
+      console.error("Error al actualizar el título del catálogo:", error.message);
+    }
+  };
+
+  const handleDescripcionModalConfirm = async (descripcion) => {
+    try {
+      await supabase
+        .from("companies")
+        .update({ descripcion: descripcion })
+        .eq("id", companyId);
+      setDescripcionModalOpen(false);
+    } catch (error) {
+      console.error("Error al actualizar la descripción:", error.message);
+    }
+  };
+
+  const handleBannerModalConfirm = async (selectedImage) => {
+    try {
+      // Cargar la imagen del banner al bucket de Supabase
+      const nameImage = `${Date.now()}${selectedImage.name}`; 
+      const { data, error } = await supabase.storage
+        .from("comp")
+        .upload(`${companyId}/${nameImage}`, selectedImage);
+      if (error) {
+        throw error;
+      }
+      console.log("Banner image uploaded successfully:", data);
+      // Actualizar el campo de banner en Supabase
+      await supabase
+        .from("companies")
+        .update({ banner: nameImage })
+        .eq("id", companyId);
+      // Cerrar el modal de banner
+      setBannerModalOpen(false);
+    } catch (error) {
+      console.error("Error uploading banner image:", error.message);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
 
         <div className={styles.field}>
           <h3 className={styles.subtitle}>Imagen para portada</h3>
@@ -130,7 +133,7 @@
               onClose={() => setPortadaModalOpen(false)}
               onConfirm={handlePortadaModalConfirm}
               currentValue={formData.imagen_portada}
-              />
+            />
           )}
         </div>
         <div className={styles.field}>
@@ -147,12 +150,12 @@
           </button>
           {tituloCatalogoModalOpen && (
             <TituloCatalogoModal
-            isOpen={tituloCatalogoModalOpen}
-            onClose={() => setTituloCatalogoModalOpen(false)}
+              isOpen={tituloCatalogoModalOpen}
+              onClose={() => setTituloCatalogoModalOpen(false)}
               onConfirm={handleTituloCatalogoModalConfirm}
               currentValue={formData.titulo_catalogo}
-              />
-              )}
+            />
+          )}
         </div>
 
         <div className={styles.field}>
@@ -169,12 +172,12 @@
           </button>
           {descripcionModalOpen && (
             <DescripcionModal
-            isOpen={descripcionModalOpen}
-            onClose={() => setDescripcionModalOpen(false)}
-            onConfirm={handleDescripcionModalConfirm}
-            currentValue={formData.descripcion}
+              isOpen={descripcionModalOpen}
+              onClose={() => setDescripcionModalOpen(false)}
+              onConfirm={handleDescripcionModalConfirm}
+              currentValue={formData.descripcion}
             />
-            )}
+          )}
         </div>
         <div className={styles.field}>
           <h3 className={styles.subtitle}>Imagen de banner</h3>
@@ -184,7 +187,7 @@
           <button
             className={styles.button}
             onClick={() => setBannerModalOpen(true)}
-            >
+          >
             {formData.banner ? "Editar" : "Agregar"}
           </button>
           {bannerModalOpen && (
@@ -194,10 +197,10 @@
               onClose={() => setBannerModalOpen(false)}
               onConfirm={handleBannerModalConfirm}
               currentValue={formData.banner}
-              />
+            />
           )}
         </div>
-              </div>
       </div>
-    );
-  }
+    </div>
+  );
+}

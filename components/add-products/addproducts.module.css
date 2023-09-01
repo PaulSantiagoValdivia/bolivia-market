@@ -62,8 +62,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: slidein 0.5s;
 }
 
+@keyframes slidein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 @media (min-width: 1240px) {
   .container {
     width: 378px;

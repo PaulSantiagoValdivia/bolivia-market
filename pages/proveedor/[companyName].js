@@ -14,6 +14,7 @@ const CompanyCatalogPage = () => {
   const [loading, setLoading] = useState(true);
   const [bannerUrl, setBannerUrl] = useState('');
   const [images, setImages] = useState({}); // State to store image URLs
+  const [imageUrls, setImageUrls] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,29 +29,25 @@ const CompanyCatalogPage = () => {
         const { data: imageData, error: downloadError } = await supabase.storage
           .from('comp')
           .download(`${data.company.id}/${data.company.banner}`);
-
-        if (downloadError) {
-          console.error(downloadError);
-          return;
-        }
-        const bannerImage = URL.createObjectURL(imageData);
-        setBannerUrl(bannerImage);
-        setCompany(data.company);
-        setCatalogs(data.catalogs);
-        
-        // Fetch images
-        const { data: imagesData, error: imagesError } = await supabase.storage
+          if (downloadError) {
+            console.error(downloadError);
+            return;
+          }
+          const bannerImage = URL.createObjectURL(imageData);
+          setBannerUrl(bannerImage);
+          setCompany(data.company);
+          setCatalogs(data.catalogs);
+          // Fetch images
+          const { data: imagesData, error: imagesError } = await supabase.storage
           .from('img2')
           .list(`${data.company.id}/`);
-
+          
           if (imagesError) {
-          console.error(imagesError);
-          return;
-        }
-
-        const imageUrls = {};
+            console.error(imagesError);
+            return;
+          }
+          const imageUrls = {};
         const promises = [];
-        
         imagesData.forEach((image) => {
           const promise = supabase.storage
             .from('img2')
@@ -60,18 +57,15 @@ const CompanyCatalogPage = () => {
                 imageUrls[image.name] = URL.createObjectURL(data);
               }
             });
-            
-            promises.push(promise);
-          });
-          
-          await Promise.all(promises);
-          setImages(imageUrls);
-          setLoading(false);
+          promises.push(promise);
+        });
+        await Promise.all(promises);
+        setImages(imageUrls);
+        setLoading(false);
       } catch (error) {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [companyName]);
 
@@ -83,7 +77,7 @@ const CompanyCatalogPage = () => {
         <>
           <Banner banner={bannerUrl} companyId={company.id} />
           <PresntationCompany company={company} />
-          <CatalogProducts catalogs={catalogs} images={images} />
+          <CatalogProducts wsp={company.wsp_link}catalogs={catalogs} images={images} />
         </>
       )}
     </>

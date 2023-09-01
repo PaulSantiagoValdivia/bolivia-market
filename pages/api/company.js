@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   try {
     const { data: companyData, error: companyError } = await supabase
       .from('companies')
-      .select('id, name, descripcion, titulo_catalogo, banner')
+      .select('id, name, descripcion, titulo_catalogo, banner, wsp_link')
       .eq('name', companyName)
       .single();
 

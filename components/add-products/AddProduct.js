@@ -14,6 +14,7 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
   const [formErrors, setFormErrors] = useState({});
   const currencyOptions = ['USD', 'BS'];
   const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+  const [nameImage, setNameImage] = useState(null);
   
   useEffect(() => {
     const fetchItem = async () => {
@@ -56,17 +57,26 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
     setFormErrors({ ...formErrors, currency_type: '' });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
+const handleImageChange = (e) => {
+  const file = e.target.files[0];
+
+  if (file) {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImagePreviewUrl(reader.result);
     };
     reader.readAsDataURL(file);
-    setFormState({ ...formState, image: file.name });
+
+    // Genera un nombre de archivo único para la imagen (por ejemplo, usando una marca de tiempo)
+    setNameImage (`${Date.now()}${file.name}`);
+    // Almacena el nombre de archivo único en el estado del formulario
+    setFormState({ ...formState, image: `${Date.now()}${file.name}`});
     setFormErrors({ ...formErrors, image: '' });
-  };
+    setSelectedImage(file);
+
+    // No cambies la siguiente línea que establece la imagen seleccionada
+  }
+};
 
 
 
@@ -107,7 +117,7 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
       if (!selectedImage) return;
 
       try {
-        const { data, error } = await supabase.storage.from('img2').upload(`${companyId}/${selectedImage.name}`, selectedImage)
+        const { data, error } = await supabase.storage.from('img2').upload(`${companyId}/${nameImage}`, selectedImage)
 
         if (error) {
           throw error
@@ -216,7 +226,7 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
               className={styles.imagePreview}
             />
           )}
-          {selectedImage ? '' : 'Seleccionar imagen'}
+          {selectedImage ? '' : ''}
         </label>
         {formErrors.image && (
           <div className={styles.errorBoxImage}>

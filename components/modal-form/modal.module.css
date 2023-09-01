@@ -8,8 +8,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: slidein 0.5s;
 }
 
+@keyframes slidein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 .modal {
   background-color: #fff;
   padding: 20px;
@@ -92,7 +102,7 @@
   align-items: center;
   margin-bottom: 120px;
   text-align: center;
-  cursor: auto;
+  cursor: pointer;
 }
 
 .textForm {

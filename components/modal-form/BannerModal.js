@@ -8,6 +8,7 @@ export default function BannerModal({ isOpen, onClose, onConfirm, currentValue }
 
   const imageSelect = (event) => {
     const selectedFile = event.target.files[0];
+    
     setInputValue(selectedFile);
 
     const reader = new FileReader();
