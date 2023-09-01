@@ -9,7 +9,7 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
     const imageUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
 
     // Crea el mensaje de WhatsApp con la imagen oculta en formato Markdown
-    const whatsappMessage = `¡Hola Vaporwave! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}\n\n${imageUrl}`;
+    const whatsappMessage = `¡Hola Vaporwave! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}\n\n![Imagen](${imageUrl})`;
 
     // Codifica el mensaje para usarlo en un enlace
     const encodedMessage = encodeURIComponent(whatsappMessage);
@@ -40,9 +40,8 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
           </p>
           {wsp && (
             <button className={styles.wspButton} onClick={() => handleConsultClick(catalog)} target="_blank">
-                <FaWhatsapp />
-              Consultar
-            </button>        
+              <FaWhatsapp /> Consultar
+            </button>
           )}
         </div>
       ))}
