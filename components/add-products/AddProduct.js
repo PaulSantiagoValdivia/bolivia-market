@@ -226,7 +226,7 @@ const handleImageChange = (e) => {
               className={styles.imagePreview}
             />
           )}
-          {selectedImage ? 'seleccionar imagen' : ''}
+          {selectedImage ? '' : 'agregar imagen'}
         </label>
         {formErrors.image && (
           <div className={styles.errorBoxImage}>
