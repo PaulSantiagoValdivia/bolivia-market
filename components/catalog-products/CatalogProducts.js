@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styles from './catalog.module.css';
 import Image from 'next/image';
 
 export default function CatalogProducts({ catalogs, images }) {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       {catalogs.map((catalog) => (
-        <div className={styles.containerProducts} key={catalog.id}>
+        <div onClick={()=>router.push('https://wa.link/vr57xv')} className={styles.containerProducts} key={catalog.id}>
           <Image
             className={styles.imgProducts}
             src={images[catalog.image]}
