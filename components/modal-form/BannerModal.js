@@ -37,8 +37,8 @@ export default function BannerModal({ isOpen, onClose, onConfirm, currentValue }
           {inputValue ? '' : 'Seleccionar imagen'}
         </label>
         <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>
-          aceptar
-        </button>
+  {currentValue ? "Editar" : "Agregar"}
+</button>
       </div>
     </div>
   );

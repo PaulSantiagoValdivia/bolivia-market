@@ -5,7 +5,7 @@ import { CgClose } from "react-icons/cg";
 
 export default function PortadaModal({ isOpen, onClose, onConfirm, currentValue }) {
 
-const [inputValue, setInputValue] = useState(currentValue);
+  const [inputValue, setInputValue] = useState(currentValue);
   const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
   const imageSelect = (event) => {
@@ -37,7 +37,9 @@ const [inputValue, setInputValue] = useState(currentValue);
           )}
           {inputValue ? '' : 'Seleccionar imagen'}
         </label>
-        <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>aceptar</button>
+        <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>
+          {currentValue ? "Editar" : "Agregar"}
+        </button>
       </div>
     </div>
   );
