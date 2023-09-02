@@ -1,14 +1,15 @@
 .container {
   text-align: center;
-
 }
 
 .presentation{
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  margin: 0;
   animation-duration: 3s;
   animation-name: scalein;
 }
@@ -74,8 +75,15 @@
   margin-top: 12px;
   color: #FFFFFF;
   cursor: pointer;
+  transition: filter 0.3s; /* Agregar una transición para la propiedad filter */
+  border-radius: 8px 8px;
 }
 
+
+.viewProducts:hover {
+cursor: pointer;
+filter: brightness(0.5); /* Cambia el color de la imagen en hover */
+}
 .info {
   margin-top: 60px;
   font-family: 'Outfit';
@@ -115,7 +123,7 @@
   left: calc(50% - 190px);
   /* el 50% es el centro de la pantalla y 190px es la mitad del ancho del botón */
   background: #FFFFFF;
-  border: 1px solid #e1dfdf;
+  border: 1px solid #a3a0a0;
   border-radius: 8px;
   cursor: pointer;
   animation-duration: 3s;
@@ -149,7 +157,7 @@
   .presentation{
     display: flex;
     flex-direction: row;
-    margin-left: 40px;
+  
     justify-content: flex-start;
     justify-content: space-between;
     animation-duration: 3s;

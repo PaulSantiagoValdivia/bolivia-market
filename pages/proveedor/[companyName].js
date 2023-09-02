@@ -5,7 +5,7 @@ import Banner from '@/components/banner-catalog/Banner';
 import PresntationCompany from '@/components/presentation-catalog/PresentationCompany';
 import CatalogProducts from '@/components/catalog-products/CatalogProducts';
 import Loading from '@/components/loading/Loading';
-
+import styles from './company.module.css'
 const CompanyCatalogPage = () => {
   const router = useRouter();
   const { companyName } = router.query;
@@ -74,11 +74,11 @@ const CompanyCatalogPage = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div className={styles.container}>
           <Banner banner={bannerUrl} companyId={company.id} />
           <PresntationCompany company={company} />
           <CatalogProducts wsp={company.wsp_link}catalogs={catalogs} images={images} />
-        </>
+        </div>
       )}
     </>
   );

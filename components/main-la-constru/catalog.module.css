@@ -9,6 +9,7 @@
   gap: 16px;
   justify-content: center;
 
+  background-color: #FFFFFF;
 }
 .containerCompanies {
   display: flex;
@@ -16,7 +17,14 @@
   align-items: center;
   width: 171px;
   height: 260px;
+  transition: box-shadow 0.5s; /* Agrega una transición aquí */
 }
+
+.containerProducts:hover {
+  box-shadow: 5px 5px 5px 5px rgba(46, 44, 44, 0.2); /* Aplica el sombreado directamente en hover */
+  transform-origin: center;
+}
+
 
 .containerCompanies > * {
   animation-fill-mode: forwards;

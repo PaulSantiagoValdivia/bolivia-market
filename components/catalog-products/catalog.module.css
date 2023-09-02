@@ -1,4 +1,3 @@
-
 .container {
   width: 100%;
   display: flex;
@@ -18,30 +17,35 @@
     transform: scale(0);
     opacity: 0;
   }
-  
+
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
 
-
 .containerProducts {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-
+  
+  padding-bottom: 10px;
+  background-color: #FFFFFF;
+  transition: box-shadow 0.5s; /* Agrega una transición aquí */
+  border-radius: 8px 8px 0px 0px;
 }
+
+.containerProducts:hover {
+  box-shadow: 5px 5px 5px 5px rgba(46, 44, 44, 0.2); /* Aplica el sombreado directamente en hover */
+  transform-origin: center;
+}
+
+
 .padding {
   padding-top: 50px;
 }
-.containerProducts:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-  color: #FDB600;
-}
+
 
 .imgProducts {
   width: 173px;
@@ -50,9 +54,15 @@
   top: 1719px;
   border-radius: 8px 8px 0px 0px;
 
+  transition: filter 0.3s; /* Agregar una transición para la propiedad filter */
 }
 
-.categoryProducts{
+.imgProducts:hover {
+  cursor: pointer;
+  filter: brightness(0.8); /* Cambia el color de la imagen en hover */
+}
+
+.categoryProducts {
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 700;
@@ -61,16 +71,17 @@
   margin-bottom: -4px;
   color: #FDB600;
 }
-.nameProducts{
+
+.nameProducts {
   font-family: 'Poppins';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-/* identical to box height */
-color: #000000;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  /* identical to box height */
+  color: #000000;
 }
 
-.descriptionProducts{
+.descriptionProducts {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -83,12 +94,12 @@ color: #000000;
 }
 
 @media (min-width: 1240px) {
-  .categoryProducts{
+  .categoryProducts {
     color: #4493FE;
   }
 }
 
-.wspButton{
+.wspButton {
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -98,8 +109,9 @@ color: #000000;
   gap: 10px;
   width: 127px;
   height: 43px;
-  margin-top: -10px ;
+  margin-top: -10px;
   background: #000000;
+  border-radius: 8px;
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 700;
@@ -108,4 +120,13 @@ color: #000000;
   margin-top: 12px;
   color: #FFFFFF;
   cursor: pointer;
+  border: none;
+  outline: none;
+  transition: filter 0.3s; /* Agregar una transición para la propiedad filter */
+}
+
+
+.wspButton:hover {
+cursor: pointer;
+filter: brightness(0.5); /* Cambia el color de la imagen en hover */
 }
