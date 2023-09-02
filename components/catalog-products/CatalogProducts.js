@@ -8,13 +8,13 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
     // Obtén el enlace de la imagen
     const imageUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
 
-    // Crea el mensaje de WhatsApp con la imagen oculta en formato Markdown
-    const whatsappMessage = `¡Hola Vaporwave! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}\n\n![Imagen](${imageUrl})`;
+    // Codifica el mensaje de WhatsApp
+    const whatsappMessage = `¡Hola Vaporwave! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageUrl}`;
 
-    // Codifica el mensaje para usarlo en un enlace
+    // Codifica el mensaje y la imagen para usarlo en un enlace
     const encodedMessage = encodeURIComponent(whatsappMessage);
-
-    // Crea el enlace de WhatsApp
+  
+    // Crea el enlace de WhatsApp con la imagen adjunta
     const whatsappURL = `${wsp}&text=${encodedMessage}`;
 
     // Abre WhatsApp en una nueva ventana o pestaña
@@ -40,7 +40,8 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
           </p>
           {wsp && (
             <button className={styles.wspButton} onClick={() => handleConsultClick(catalog)} target="_blank">
-              <FaWhatsapp /> Consultar
+              <FaWhatsapp />
+              Consultar
             </button>
           )}
         </div>
