@@ -4,8 +4,8 @@ const Loading = () => {
   return (
     <div className={styles.loadingContainer}>
       <div className={styles.loadingText}>
-        <span className={styles.yellowText}>L</span>
-        <span className={styles.blackText}>c</span>
+        <span className={styles.yellowText}>Bolivia</span>
+        <span className={styles.blackText}>Market</span>
       </div>
     </div>
   );

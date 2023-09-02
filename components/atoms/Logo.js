@@ -4,7 +4,7 @@ export default function Logo() {
   const router = useRouter();
   return (
     <div className={styles.logo}>
-    La<span className={styles.title} onClick={() => router.push("/")}>Constru.com</span>
+    Bolivia<span className={styles.title} onClick={() => router.push("/")}>Market</span>
     </div>
   )
 }
