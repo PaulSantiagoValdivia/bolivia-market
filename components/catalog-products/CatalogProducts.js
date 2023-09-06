@@ -1,15 +1,18 @@
 import styles from './catalog.module.css';
 import Image from 'next/image';
 import { FaWhatsapp } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import ModalCompany from '../modal-company/ModalCompany';
 
 export default function CatalogProducts({ wsp, catalogs, images }) {
   const [imageUrl, setImageUrl] = useState();
-
+  const [showModal, setShowModal] = useState(false);
+  const [catalog, setCatalog] = useState(null);
+  const [imageSelected, setImageSelected] = useState(null)
   const handleConsultClick = (catalog) => {
     if (imageUrl) {
       const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
-      const whatsappMessage = `¡Hola Vaporwave! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
+      const whatsappMessage = `¡Hola! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
       const whatsappURL = `${wsp}&text=${encodedMessage}`;
       window.open(whatsappURL, '_blank', 'noopener,noreferrer');
@@ -17,26 +20,23 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
       alert('Por favor espera a que la imagen se cargue antes de consultar.');
     }
   };
-  
 
-  useEffect(() => {
-    if (catalogs.length > 0) {
-      // Establecer la URL de la primera imagen cuando se cargue la lista de catálogos
-      const initialImageUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalogs[0].image}`;
-      setImageUrl(initialImageUrl);
-    }
-  }, [catalogs]);
 
-  const handleClick = (catalog) => () => {
-    window.open(`https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`);
+
+  const handleClick = (catalog, imageUrl) => {
+    setShowModal(true);
+    setCatalog(catalog);
+    setImageSelected(imageUrl);
   };
-
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
     <div className={styles.container}>
       {catalogs.map((catalog) => (
         <div className={styles.containerProducts} key={catalog.id}>
           <Image
-            onClick={handleClick(catalog)}
+            onClick={() => handleClick(catalog, images[catalog.image])}
             className={styles.imgProducts}
             src={images[catalog.image]}
             alt={catalog.name}
@@ -58,6 +58,9 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
           )}
         </div>
       ))}
+      {showModal && (
+        <ModalCompany wsp={wsp} imageUrl={imageSelected} catalog={catalog} onClose={handleCloseModal} handleWsp={handleConsultClick} />
+      )}
     </div>
   );
 }

@@ -26,31 +26,6 @@
 }
 
 
-.containerCompanies > * {
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-
-.containerCompanies > *:nth-child(1) {
-  animation: scaleIn 1s ease-in-out;
-}
-
-.containerCompanies > *:nth-child(2) {
-  animation: scaleIn 2s ease-in-out ; /* Animar después de 1 segundo */
-}
-
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
 .containerCompanies:hover {
   transform: scale(1.1);

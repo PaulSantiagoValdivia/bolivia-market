@@ -1,0 +1,135 @@
+/* modal.module.css */
+
+/* Modal container */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+}
+
+/* Modal content */
+.modalContent {
+  display: flex;
+  background-color: #fff;
+  /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  /* Box shadow for depth */
+  max-width: 80%;
+  /* Adjust the maximum width as needed */
+  height: 50%;
+  /* Adjust the maximum height as needed */
+  position: relative;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 40vh;
+  height: 40vh;
+}
+
+/* Close button (top-right corner) */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+}
+
+/* Close button hover effect */
+.closeButton:hover {
+  color: #333;
+}
+
+/* Style for the image inside the modal */
+.modalContent img {
+  width: -webkit-fill-available;
+  /* Scale down the image width to fit the modal */
+  height: -webkit-fill-available;
+  /* Scale down the image height to fit the modal */
+  border-radius: 8px;
+
+}
+
+.info {
+
+  width: 50%;
+  height: 80%;
+  padding: 10px;
+}
+
+.title {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  color: #000000;
+}
+
+.price {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  color: #FDB600
+}
+
+.wspButton {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 268px;
+  height: 43px;
+  margin-top: 47px;
+  background: #000000;
+  border-radius: 8px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: filter 0.3s;
+  /* Agregar una transición para la propiedad filter */
+}
+
+
+.wspButton:hover {
+  cursor: pointer;
+  filter: brightness(0.5);
+  /* Cambia el color de la imagen en hover */
+}
+
+@media (max-width: 710px) {
+  .info {
+    width: 36vh;
+    margin: 0 auto;
+  }
+
+  .modalContent {
+    flex-direction: column;
+    height: 80%;
+  }
+
+  .wspButton {
+    width: 36vh;
+    bottom: 20px;
+  }
+}

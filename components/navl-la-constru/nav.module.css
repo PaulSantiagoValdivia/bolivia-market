@@ -6,17 +6,6 @@
   gap: 10px;
   background: #F5F4F4;
   width: auto;
-  animation: scaleIn 2s ease;
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .description {

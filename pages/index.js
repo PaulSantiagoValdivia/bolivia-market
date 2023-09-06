@@ -5,7 +5,7 @@ import NavBar from "@/components/navl-la-constru/NavBar"
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/router";
-// ... (imports)
+import styles from "./error.module.css"
 
 export default function LaConstru() {
   const [loading, setLoading] = useState(true);
@@ -78,11 +78,11 @@ export default function LaConstru() {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div className={styles.content}>
           <NavBar />
           <CatalogCompanies images={images} redirectToCatalog={redirectToCatalog} companies={companies} />
           <Footer />
-        </>
+        </div>
       )}
     </>
   );
