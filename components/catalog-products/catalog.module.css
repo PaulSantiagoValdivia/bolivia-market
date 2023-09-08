@@ -29,8 +29,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  padding-bottom: 10px;
   background-color: #FFFFFF;
   transition: box-shadow 0.5s; /* Agrega una transición aquí */
   border-radius: 8px 8px 0px 0px;
