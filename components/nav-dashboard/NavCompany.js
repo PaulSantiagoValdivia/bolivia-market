@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 const NavCompany = ({companyName})=> {
   const router = useRouter();
   const redirectToCatalog = (companyName) => {
-    router.push(`/proveedor/${encodeURIComponent(companyName)}`);
+    router.push(`/proveedor/${companyName}`);
   };
   async function signOut() {
     const { error } = await supabase.auth.signOut();
