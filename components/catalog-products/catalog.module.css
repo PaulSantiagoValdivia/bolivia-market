@@ -107,22 +107,22 @@
   align-items: center;
   padding: 10px;
   gap: 10px;
-  width: 127px;
+  width: -webkit-fill-available;
   height: 43px;
   margin-top: -10px;
   background: #000000;
-  border-radius: 8px;
+  border-radius: 0px 0px 8px 8px;
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  margin-top: 12px;
+  margin-top: 6px;
   color: #FFFFFF;
   cursor: pointer;
   border: none;
   outline: none;
-  transition: filter 0.3s; /* Agregar una transición para la propiedad filter */
+  transition: filter 0.3s;
 }
 
 
