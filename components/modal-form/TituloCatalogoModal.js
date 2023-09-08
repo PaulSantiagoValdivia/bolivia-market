@@ -24,7 +24,7 @@ export default function TituloCatalogoModal({ isOpen, onClose, onConfirm, curren
         <button className={styles.closeButton} onClick={onClose}>
           <CgClose />
         </button>
-        <h3 className={styles.textForm}>agregar imagen de Portada</h3>
+        <h3 className={styles.textForm}>agregar titulo del catalogo</h3>
         <p className={styles.p}>agregar título</p>
         <textarea className={styles.labelImage} type="text" value={inputValue} onChange={handleChange} />
         <button className={styles.submitButton} onClick={() => onConfirm(inputValue)}>
