@@ -9,22 +9,26 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   const [showModal, setShowModal] = useState(false);
   const [catalog, setCatalog] = useState(null);
   const [imageSelected, setImageSelected] = useState(null)
-  
+
   const handleConsultClick = (catalog) => {
-    const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
-    const whatsappMessage = `¡Hola! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappURL = `${wsp}&text=${encodedMessage}`;
-    window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+    if (imageUrl) {
+      const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
+      const whatsappMessage = `¡Hola! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappURL = `${wsp}&text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+    } else {
+      alert('Por favor espera a que la imagen se cargue antes de consultar.');
+    }
   };
-  
+
 
 
   const handleClick = (catalog, imageUrl) => {
     setShowModal(true);
     setCatalog(catalog);
     setImageSelected(imageUrl);
-    console.log(imageUrl);
+    console.log(images);
   };
   const handleCloseModal = () => {
     setShowModal(false);
