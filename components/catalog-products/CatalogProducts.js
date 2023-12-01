@@ -9,7 +9,9 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   const [showModal, setShowModal] = useState(false);
   const [catalog, setCatalog] = useState(null);
   const [imageSelected, setImageSelected] = useState(null)
-  
+  const [selectedCategory, setSelectedCategory] = useState(''); // Estado para la categoría seleccionada
+
+
   const handleConsultClick = (catalog) => {
     if (imageUrl) {
       const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/${catalog.company_id}/${catalog.image}`;
@@ -22,18 +24,38 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
     }
   };
 
+  const sortedCatalogs = [...catalogs].sort((a, b) => b.price - a.price);
+
+  // Filtrar por categoría seleccionada o mostrar los tres más caros si no hay selección
+  const filteredCatalogs = selectedCategory
+    ? sortedCatalogs.filter((catalog) => catalog.categoria.toLowerCase() === selectedCategory.toLowerCase())
+    : sortedCatalogs.slice(0, 20);
 
   const handleClick = (catalog, imageUrl) => {
     setShowModal(true);
     setCatalog(catalog);
     setImageSelected(imageUrl);
+    console.log(catalogs);
   };
   const handleCloseModal = () => {
     setShowModal(false);
   };
   return (
+    <div>
+      <div className={styles.searchContainer}>
+        <select
+          className={styles.searchInput}
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          placeholder="Filtrar por categoría"
+        >
+          <option value="">Todos</option>
+          <option value="maquinas">Máquinas</option>
+          <option value="repuestos">Repuestos</option>
+        </select>
+      </div>
     <div className={styles.container}>
-      {catalogs.map((catalog) => (
+      {filteredCatalogs.map((catalog) => (
         <div className={styles.containerProducts} key={catalog.id}>
           <Image
             onClick={() => handleClick(catalog, images[catalog.image])}
@@ -51,16 +73,23 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
             {catalog.price} {catalog.currency_type}
           </p>
           {wsp && (
-            <button className={styles.wspButton} onClick={() => handleConsultClick(catalog)} target="_blank">
+            <button className={styles.wspButton} onClick={() => handleConsultClick(catalog)}>
               <FaWhatsapp />
               Consultar
             </button>
           )}
         </div>
       ))}
-      {showModal && (
-        <ModalCompany wsp={wsp} imageUrl={imageSelected} catalog={catalog} onClose={handleCloseModal} handleWsp={handleConsultClick} />
-      )}
     </div>
-  );
+    {showModal && (
+      <ModalCompany
+        wsp={wsp}
+        imageUrl={imageSelected}
+        catalog={catalog}
+        onClose={handleCloseModal}
+        handleWsp={handleConsultClick}
+      />
+    )}
+  </div>
+    );
 }

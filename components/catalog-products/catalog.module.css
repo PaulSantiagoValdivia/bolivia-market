@@ -92,10 +92,37 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.searchContainer{
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  padding:0 0 20px;
 
+}
+.searchInput {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 20px; /* Espacio adicional si es necesario */
+  cursor: pointer;
+  width: 80%;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #FDB600;
+  box-shadow: 0 0 0 2px rgba(68, 147, 254, 0.2);
+}
 @media (min-width: 1240px) {
   .categoryProducts {
     color: #4493FE;
+  }
+  .searchInput:focus {
+    outline: none;
+
+    border-color: #4493FE;
+
   }
 }
 
