@@ -11,7 +11,7 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   const [imageSelected, setImageSelected] = useState(null)
   const handleConsultClick = (catalog) => {
     if (imageUrl) {
-      const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
+      const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/20/${catalog.image}`;
       const whatsappMessage = `¡Hola! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
       const whatsappURL = `${wsp}&text=${encodedMessage}`;
