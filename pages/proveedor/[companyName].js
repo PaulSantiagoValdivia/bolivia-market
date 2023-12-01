@@ -57,15 +57,17 @@ const CompanyCatalogPage = () => {
                 imageUrls[image.name] = URL.createObjectURL(data);
               }
             });
-          promises.push(promise);
-        });
-        await Promise.all(promises);
-        setImages(imageUrls);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
+            promises.push(promise);
+          });
+          await Promise.all(promises);
+          setImages(imageUrls);
+          setLoading(false);
+          console.log(images);
+        } catch (error) {
+          setLoading(false);
+        }
+      };
+    
     fetchData();
   }, [companyName]);
 
