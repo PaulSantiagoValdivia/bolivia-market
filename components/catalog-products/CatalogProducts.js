@@ -9,10 +9,9 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   const [showModal, setShowModal] = useState(false);
   const [catalog, setCatalog] = useState(null);
   const [imageSelected, setImageSelected] = useState(null)
-
   const handleConsultClick = (catalog) => {
     if (imageUrl) {
-      const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${images[catalog.image]}`;
+      const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/19/${catalog.image}`;
       const whatsappMessage = `¡Hola! Me interesa comprar el producto ${catalog.name}.\n\n${catalog.description}\n\nPrecio: ${catalog.price}${catalog.currency_type}$. \n\nImagen: ${imageOnlineUrl}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
       const whatsappURL = `${wsp}&text=${encodedMessage}`;
@@ -28,7 +27,6 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
     setShowModal(true);
     setCatalog(catalog);
     setImageSelected(imageUrl);
-    console.log(images);
   };
   const handleCloseModal = () => {
     setShowModal(false);
