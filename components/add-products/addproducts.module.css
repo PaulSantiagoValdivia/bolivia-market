@@ -54,7 +54,7 @@
 /* container.module.css */
 .container {
   width: 378px;
-  height: 782px;
+  height: 882px;
   position: absolute;
   background: #FFFFFF;
   border-radius: 8px;
@@ -300,4 +300,16 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+.select2 {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  border: 1px solid #292D32;
+  line-height: 23px;
+  width: -webkit-fill-available !important;
+  height: 40px;
+  cursor: pointer;
 }

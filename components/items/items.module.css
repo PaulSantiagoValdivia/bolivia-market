@@ -13,7 +13,9 @@
   display: flex;
   flex-direction: column;
   width: 348px;
+
 }
+
 .delate {
   display: flex;
   flex-direction: row;
@@ -30,35 +32,38 @@
   border: none;
   outline: none;
 }
-.delate:hover{
+
+.delate:hover {
   background-color: #e84f4f;
 }
-.edit{
+
+.edit {
   box-sizing: border-box;
 
-/* Auto layout */
+  /* Auto layout */
 
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 10px;
-border: 1px solid #292D32;
-border-radius: 8px;
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 23px;
-/* identical to box height */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #292D32;
+  border-radius: 8px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
 
-cursor: pointer;
-color: #292D32;
+  cursor: pointer;
+  color: #292D32;
 }
 
 .edit:hover {
   background-color: #aaa;
 }
+
 .buttonContainer {
   display: flex;
   flex-direction: row;
@@ -67,35 +72,41 @@ color: #292D32;
   gap: 19px;
 }
 
-.item{
+.item {
   display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 10px;
-justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  justify-content: space-between;
 
 }
 
-.nameItem{
+.nameItem {
   font-family: 'Outfit';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 23px;
-/* identical to box height */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
 
-text-align: center;
+  text-align: center;
 
-color: #2E2E2E;
+  color: #2E2E2E;
 }
+
 @media (min-width: 1240px) {
   .h2 {
     margin-left: 8px;
   }
 
   .itemList {
-    width: 550px;
+    width: -webkit-fill-available;
+    overflow-x: auto;
+    /* Permite desplazamiento horizontal si la tabla es muy ancha */
+    max-height: 400px;
+    /* Ajusta según tus necesidades */
+    overflow-y: scroll;
   }
 }

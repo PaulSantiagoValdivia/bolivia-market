@@ -9,13 +9,14 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
     price: '',
     currency_type: '',
     image: '',
+    categoria: '',
   });
   const [selectedImage, setSelectedImage] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const currencyOptions = ['USD', 'BS'];
   const [imagePreviewUrl, setImagePreviewUrl] = useState('');
   const [nameImage, setNameImage] = useState(null);
-  
+
   useEffect(() => {
     const fetchItem = async () => {
       if (!itemId) return;
@@ -57,29 +58,33 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
     setFormErrors({ ...formErrors, currency_type: '' });
   };
 
-const handleImageChange = (e) => {
-  const file = e.target.files[0];
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
 
-  if (file) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreviewUrl(reader.result);
-    };
-    reader.readAsDataURL(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
 
-    // Genera un nombre de archivo único para la imagen (por ejemplo, usando una marca de tiempo)
-    setNameImage (`${Date.now()}${file.name}`);
-    // Almacena el nombre de archivo único en el estado del formulario
-    setFormState({ ...formState, image: `${Date.now()}${file.name}`});
-    setFormErrors({ ...formErrors, image: '' });
-    setSelectedImage(file);
+      // Genera un nombre de archivo único para la imagen (por ejemplo, usando una marca de tiempo)
+      setNameImage(`${Date.now()}${file.name}`);
+      // Almacena el nombre de archivo único en el estado del formulario
+      setFormState({ ...formState, image: `${Date.now()}${file.name}` });
+      setFormErrors({ ...formErrors, image: '' });
+      setSelectedImage(file);
 
-    // No cambies la siguiente línea que establece la imagen seleccionada
-  }
-};
+      // No cambies la siguiente línea que establece la imagen seleccionada
+    }
+  };
 
 
-
+  const handlecategoriaChange = (e) => {
+    const value = e.target.value;
+    setFormState({ ...formState, categoria: value });
+    setFormErrors({ ...formErrors, categoria: '' });
+  };
   const validateForm = () => {
     const errors = {};
 
@@ -93,6 +98,8 @@ const handleImageChange = (e) => {
       errors.currency_type = 'Completa este campo';
     } else if (!formState.image && !selectedImage) {
       errors.image = 'Completa este campo';
+    } else if (!formState.categoria) {
+      errors.categoria = 'Completa este campo';
     }
 
     setFormErrors(errors);
@@ -114,20 +121,20 @@ const handleImageChange = (e) => {
     if (!selectedImage) {
       setFormErrors({ ...formErrors, image: 'Completa este campo' });
     }
-      if (!selectedImage) return;
+    if (!selectedImage) return;
 
-      try {
-        const { data, error } = await supabase.storage.from('img2').upload(`${companyId}/${nameImage}`, selectedImage)
+    try {
+      const { data, error } = await supabase.storage.from('img2').upload(`${companyId}/${nameImage}`, selectedImage)
 
-        if (error) {
-          throw error
-        }
-
-        console.log('Image uploaded successfully:', data)
-        setSelectedImage(null)
-      } catch (error) {
-        console.error('Error uploading image:', error.message)
+      if (error) {
+        throw error
       }
+
+      console.log('Image uploaded successfully:', data)
+      setSelectedImage(null)
+    } catch (error) {
+      console.error('Error uploading image:', error.message)
+    }
 
     if (itemId) {
       // Update existing item
@@ -145,6 +152,7 @@ const handleImageChange = (e) => {
           price: formState.price,
           currency_type: formState.currency_type,
           image: formState.image,
+          categoria: formState.categoria,
         }).eq('id', itemId);
         if (updateError) {
           console.error(updateError);
@@ -156,7 +164,7 @@ const handleImageChange = (e) => {
 
     } else {
       // Insert new item
-      const { error: insertError } = await supabase.from('catalogs').insert([{ company_id: companyId, name: formState.name, description: formState.description, price: formState.price, currency_type: formState.currency_type, image: formState.image }]);
+      const { error: insertError } = await supabase.from('catalogs').insert([{ company_id: companyId, name: formState.name, description: formState.description, price: formState.price, currency_type: formState.currency_type, image: formState.image, categoria: formState.categoria, }]);
 
       if (insertError) {
         console.error(insertError);
@@ -167,7 +175,7 @@ const handleImageChange = (e) => {
     }
 
     onClose();
-    setFormState({ name: '', description: '', price: '', currency_type: '', image: '' });
+    setFormState({ name: '', description: '', price: '', currency_type: '', image: '', categoria: '', });
   };
 
   return (
@@ -231,6 +239,24 @@ const handleImageChange = (e) => {
         {formErrors.image && (
           <div className={styles.errorBoxImage}>
             {formErrors.image}
+          </div>
+
+        )}
+        <p className={styles.textForm}>Categoría</p>
+        <select
+          className={styles.select2}
+          name="categoria"
+          value={formState.categoria}
+          onChange={handlecategoriaChange}
+        >
+          <option value="">Selecciona una categoría</option>
+          <option value="herramientas">Herramientas</option>
+          <option value="pinturas">Pinturas</option>
+          <option value="electrico">Eléctrico</option>
+        </select>
+        {formErrors.categoria && (
+          <div className={styles.errorBox}>
+            {formErrors.categoria}
           </div>
         )}
         <button className={styles.button} type="submit">Aceptar</button>
