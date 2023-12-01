@@ -185,14 +185,14 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
       <h2 className={styles.h2} H2>Agrega, actualiza o elimina este producto</h2>
       <form className={styles.form} onSubmit={handleSubmit}  >
         <p className={styles.textForm} >nombre del producto </p>
-        <input className={styles.inputName} InputName type="text" name="name" placeholder="ingresa el nombre del producto" value={formState.name} maxLength={25} onChange={handleNameChange} />
+        <input className={styles.inputName} InputName type="text" name="name" placeholder="ingresa el nombre del producto" value={formState.name} maxLength={20} onChange={handleNameChange} />
         {formErrors.name && (
           <div className={styles.errorBox}>
             {formErrors.name}
           </div>
         )}
         <p className={styles.textForm} >descripción del producto </p>
-        <input className={styles.inputDescription} name="description" placeholder="ingresa una descripcion" value={formState.description} maxLength={25} onChange={handleDescriptionChange} />
+        <input className={styles.inputDescription} name="description" placeholder="ingresa una descripcion" value={formState.description} maxLength={40} onChange={handleDescriptionChange} />
         {formErrors.description && (
           <div className={styles.errorBoxDescription}>
             {formErrors.description}

@@ -84,11 +84,13 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  /* identical to box height */
-  width: 171px;
+  width: 171px; /* Asegúrate de que el ancho se ajuste al de tus tarjetas */
   text-align: center;
   margin-top: -18px;
   color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (min-width: 1240px) {
