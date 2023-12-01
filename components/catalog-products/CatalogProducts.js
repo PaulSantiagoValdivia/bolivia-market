@@ -9,6 +9,7 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   const [showModal, setShowModal] = useState(false);
   const [catalog, setCatalog] = useState(null);
   const [imageSelected, setImageSelected] = useState(null)
+  
   const handleConsultClick = (catalog) => {
     if (imageUrl) {
       const imageOnlineUrl = `https://jzmtmllsdrqaenisuxbj.supabase.co/storage/v1/object/public/img2/${catalog.company_id}/${catalog.image}`;
