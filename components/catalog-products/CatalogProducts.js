@@ -27,7 +27,6 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
     setShowModal(true);
     setCatalog(catalog);
     setImageSelected(imageUrl);
-    console.log(catalog);
   };
   const handleCloseModal = () => {
     setShowModal(false);
