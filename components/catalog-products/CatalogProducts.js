@@ -22,7 +22,6 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
   };
 
 
-
   const handleClick = (catalog, imageUrl) => {
     setShowModal(true);
     setCatalog(catalog);
