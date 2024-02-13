@@ -250,8 +250,10 @@ const AddProduct = ({ companyId, itemId, onClose, updateItems }) => {
           onChange={handlecategoriaChange}
         >
           <option value="">Selecciona una categoría</option>
-          <option value="repuestos">Repuestos</option>
-          <option value="maquinas">Maquinas</option>
+          <option value="repuestos">Remeras</option>
+          <option value="maquinas">Pantalones</option>
+          <option value="maquinas">Bebes</option>
+          <option value="maquinas">Vestidos</option>
         </select>
         {formErrors.categoria && (
           <div className={styles.errorBox}>
