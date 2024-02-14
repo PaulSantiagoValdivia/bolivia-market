@@ -50,8 +50,10 @@ export default function CatalogProducts({ wsp, catalogs, images }) {
           placeholder="Filtrar por categoría"
         >
           <option value="">Todos</option>
-          <option value="maquinas">Máquinas</option>
-          <option value="repuestos">Repuestos</option>
+          <option value="remeras">Remeras</option>
+          <option value="pantalones">Pantalones</option>
+          <option value="bebes">Bebes</option>
+          <option value="vestidos">Vestidos</option>
         </select>
       </div>
     <div className={styles.container}>
